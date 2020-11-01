@@ -61,11 +61,11 @@ public class Chain {
     }
 
 
-    ChainLink [] arr(ChainLink, ...) {
-        //return an array
+    ChainLink [] arr(params ChainLink[] links) {
+        return links;
     }
-    float [] arr(float, ...) {
-        //return an array 
+    float [] arr(params float[] floats) {
+        return floats;
     }
 }
 
@@ -74,11 +74,15 @@ public class ChainLink {
     ChainLink [] links;
     float [] chances;
 
-    public ChainLink(ChainLink [] links, float [] ch) {
-
+    public ChainLink(ChainLink [] li, float [] ch) {
+        links = li;
+        chances = ch;
     }
     public void generate();
 
+    public void next() {
+        float rand;
+    }
 
 }
 
