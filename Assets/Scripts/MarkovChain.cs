@@ -31,10 +31,6 @@ public class MarkovChain : MonoBehaviour
 
 }
 
-/*
-do i want to do structs instead of parallel arrays??
-*/
-
 
 public class Chain {
 
@@ -73,27 +69,6 @@ public class Chain {
         buildingEnd.addLinks(emptySpace);
         buildingEnd.addChances(1);
 
-/*
-        emptySpace = new EmptySpace(
-            arr(emptySpace, buildingFront),
-            arr(0.7, 0.3)
-        );
-
-        buildingFront = new BuildingFront(
-            arr(buildingMid),
-            arr(1)
-        );
-
-        buildingMid = new BuildingMid(
-            arr(buildingMid, buildingEnd),
-            arr(0.7, 0.3)
-        );
-
-        buildingEnd = new BuildingEnd(
-            arr(emptySpace),
-            arr(1)
-        );
-*/
     }
 
         public void iterate() {
@@ -101,14 +76,6 @@ public class Chain {
         currentLink.generate();
     }
 
-/*
-    ChainLink [] arr(params ChainLink[] links) {
-        return links;
-    }
-    double [] arr(params double[] doubles) {
-        return doubles;
-    }
-    */
 }
 
 
@@ -128,26 +95,20 @@ public abstract class ChainLink {
         chances = doubles;
     }
 
-    /*
-    public ChainLink(ChainLink[] li, double[] ch) {
-        links = li; 
-        chances = ch;
-    }
-    */
-
     public abstract void generate();
 
     public ChainLink getNext() {
-        float rand = Random.Range(0,1);
-        double tracker = chances[0];
+        float rand = Random.Range(0f,1f);
+        double tracker = 0;
         ChainLink nextLink = links[0];
-        for(int i = 1; i < links.Length; i++) {
-            tracker += chances[i];
+        for(int i = 0; i < links.Length; i++) {
             if(tracker > rand) {
                 break;
             }
             nextLink = links[i];
+            tracker += chances[i];
         }
+        Debug.Log(rand);
         return nextLink;
     }
 
@@ -156,7 +117,6 @@ public abstract class ChainLink {
 
 public class EmptySpace : ChainLink {
 
-    //public EmptySpace(ChainLink [] li, double [] ch) : base(li, ch){}
     public override void generate() {
         Chain.level = Chain.level + " ";
     }
@@ -164,8 +124,6 @@ public class EmptySpace : ChainLink {
 }
 
 public class BuildingFront : ChainLink {
-
-    //public BuildingFront(ChainLink [] li, double [] ch) : base(li, ch){}
 
     public override void generate() {
         Chain.level = Chain.level + "[";
@@ -175,8 +133,6 @@ public class BuildingFront : ChainLink {
 
 public class BuildingMid : ChainLink {
 
-    //public BuildingMid(ChainLink [] li, double [] ch) : base(li, ch){}
-
     public override void generate() {
         Chain.level = Chain.level + "-";
     }
@@ -184,8 +140,6 @@ public class BuildingMid : ChainLink {
 }
 
 public class BuildingEnd : ChainLink {
-
-    //public BuildingEnd(ChainLink [] li, double [] ch) : base(li, ch){}
 
     public override void generate() {
         Chain.level = Chain.level + "]";
