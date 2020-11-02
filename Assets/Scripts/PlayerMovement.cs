@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // Put under player object, in control of jumping
+    // **Note that in Project Settings, the two inputs for "Jumping" are "Space" and "Left MB"
     Rigidbody2D myRb;
     public float jumpForceDefault = 10f; // default jump force, baseline
     float jumpForce; // actual jump force being used in code
@@ -51,5 +52,13 @@ public class PlayerMovement : MonoBehaviour
         isJumping = false;
         // revert back to default jump force after each jump
         jumpForce = jumpForceDefault;
+    }
+
+    // grounded check (with the second box collider, which is a trigger)
+    void OnTriggerStay2D(Collider2D activator) {
+        isGrounded = true;
+    }
+    void OnTriggerExit2D(Collider2D activator) {
+        isGrounded = false;
     }
 }
