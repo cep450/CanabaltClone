@@ -8,7 +8,7 @@ public class MarkovChain : MonoBehaviour
 
     Chain chain;
 
-    int timerLimit = 30;
+    int timerLimit = 20;
     int timer = 0;
 
     // Start is called before the first frame update
@@ -32,6 +32,14 @@ public class MarkovChain : MonoBehaviour
 }
 
 
+/*
+TODO
+- need to make values able to be tuned in real time. ex. more empty space when
+player is moving faster. 
+- saving data between stuff. ex. pieces of the same building generate at the same height.
+*/
+
+
 public class Chain {
 
 
@@ -44,9 +52,20 @@ public class Chain {
 
 
     EmptySpace emptySpace = new EmptySpace();
+
     BuildingFront buildingFront = new BuildingFront();
     BuildingMid buildingMid = new BuildingMid();
     BuildingEnd buildingEnd = new BuildingEnd();
+
+    CrackedFront crackedFront = new CrackedFront();
+    CrackedMid crackedMid = new CrackedMid();
+    CrackedEnd crackedEnd = new CrackedEnd();
+
+    WindowFront windowFront = new WindowFront();
+    WindowMid windowMid = new WindowMid();
+    WindowEnd windowEnd = new WindowEnd();
+
+    Billboard billboard = new Billboard();
 
 
     public Chain(string lvl) {
@@ -57,8 +76,9 @@ public class Chain {
 
     public void initChain() {
 
-        emptySpace.addLinks(emptySpace, buildingFront);
-        emptySpace.addChances(0.6, 0.4);
+        emptySpace.addLinks(emptySpace, buildingFront, crackedFront, windowFront, billboard);
+        emptySpace.addChances(0.6,      0.37,           0.025,        0.025,        0.025);
+
 
         buildingFront.addLinks(buildingMid);
         buildingFront.addChances(1);
@@ -68,6 +88,30 @@ public class Chain {
 
         buildingEnd.addLinks(emptySpace);
         buildingEnd.addChances(1);
+
+
+        crackedFront.addLinks(crackedMid);
+        crackedFront.addChances(1);
+
+        crackedMid.addLinks(crackedMid, crackedEnd);
+        crackedMid.addChances(0.7, 0.3);
+
+        crackedEnd.addLinks(emptySpace);
+        crackedEnd.addChances(1);
+
+
+        windowFront.addLinks(windowMid);
+        windowFront.addChances(1);
+
+        windowMid.addLinks(windowMid, windowEnd);
+        windowMid.addChances(0.7, 0.3);
+
+        windowEnd.addLinks(emptySpace);
+        windowEnd.addChances(1);
+
+
+        billboard.addLinks(emptySpace);
+        billboard.addChances(1);
 
     }
 
@@ -98,7 +142,7 @@ public abstract class ChainLink {
     public abstract void generate();
 
     public ChainLink getNext() {
-        float rand = Random.Range(0f,1f);
+        float rand = Random.Range(0f,sumArr(chances)); //the %s don't have to sum to 1- makes it less of a pain tuning
         double tracker = 0;
         ChainLink nextLink = links[0];
         for(int i = 0; i < links.Length; i++) {
@@ -108,8 +152,15 @@ public abstract class ChainLink {
             nextLink = links[i];
             tracker += chances[i];
         }
-        Debug.Log(rand);
         return nextLink;
+    }
+
+    float sumArr(double [] darr) {
+        float counter = 0;
+        for(int i = 0; i < darr.Length; i++) {
+            counter += (float)darr[i];
+        }
+        return counter;
     }
 
 }
@@ -145,4 +196,53 @@ public class BuildingEnd : ChainLink {
         Chain.level = Chain.level + "]";
     }
     
+}
+
+public class CrackedFront : ChainLink {
+
+    public override void generate() {
+        Chain.level = Chain.level + "{";
+    }
+}
+
+public class CrackedMid : ChainLink {
+
+    public override void generate() {
+        Chain.level = Chain.level + "~";
+    }
+}
+
+public class CrackedEnd : ChainLink {
+
+    public override void generate() {
+        Chain.level = Chain.level + "}";
+    }
+}
+
+public class WindowFront : ChainLink {
+
+    public override void generate() {
+        Chain.level = Chain.level + "|";
+    }
+}
+
+public class WindowMid : ChainLink {
+
+    public override void generate() {
+        Chain.level = Chain.level + "=";
+    }
+}
+
+public class WindowEnd : ChainLink {
+
+    public override void generate() {
+        Chain.level = Chain.level + "|";
+    }
+}
+
+public class Billboard : ChainLink {
+
+    public override void generate() {
+        Chain.level = Chain.level + "#";
+    }
 }
