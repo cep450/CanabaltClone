@@ -14,7 +14,7 @@ public class DontStrayFarFromZero : MonoBehaviour
     void Update()
     {
         if(transform.position.x > maxDistanceFromZero) {
-            //TODO
+            transform.position = new Vector3(0f, transform.position.y, transform.position.z);
         }
     }
 }
