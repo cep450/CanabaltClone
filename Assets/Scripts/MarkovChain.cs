@@ -11,7 +11,7 @@ using UnityEngine;
 public class MarkovChain : MonoBehaviour
 {
 
-    Chain chain;
+    Chain chain;  
 
     int timerLimit = 20;
     int timer = 0;
@@ -54,8 +54,14 @@ player is moving faster.
 - get a reference to the player object in the inspector, or via code, and have it
 use that to access the player speed and position 
 */
+  
 
+struct generationGroup {
+    float height;
+    int linksCounter;
 
+}
+                     
 public class Chain {
 
 
@@ -65,6 +71,10 @@ public class Chain {
     public static string level;
 
     ChainLink currentLink;
+
+    generationGroup currentGroup;
+    generationGroup previousGroup;
+    generationGroup previousPreviousGroup;
 
 
     EmptySpace emptySpace = new EmptySpace();
