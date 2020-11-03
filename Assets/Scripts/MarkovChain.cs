@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//PURPOSE: markov chain for building generation
+//USEAGE: place on empty game object. will have a function to call to start it
+//going, and a function to call to stop it (e.g. when the player dies).
+//needs to see the player speed and position- reference to the player object
+// !! give it a reference to the player object in the inspector
 
 public class MarkovChain : MonoBehaviour
 {
@@ -29,6 +34,15 @@ public class MarkovChain : MonoBehaviour
     }
 
 
+    public void startChain() {
+        //TODO
+    }
+
+    public void stopChain() {
+        //TODO
+    }
+
+
 }
 
 
@@ -37,6 +51,8 @@ TODO
 - need to make values able to be tuned in real time. ex. more empty space when
 player is moving faster. 
 - saving data between stuff. ex. pieces of the same building generate at the same height.
+- get a reference to the player object in the inspector, or via code, and have it
+use that to access the player speed and position 
 */
 
 
@@ -84,7 +100,7 @@ public class Chain {
         buildingFront.addChances(1);
 
         buildingMid.addLinks(buildingMid, buildingEnd);
-        buildingMid.addChances(0.7, 0.3);
+        buildingMid.addChances(0.75, 0.25);
 
         buildingEnd.addLinks(emptySpace);
         buildingEnd.addChances(1);
