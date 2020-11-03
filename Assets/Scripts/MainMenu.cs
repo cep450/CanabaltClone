@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject aboutPanel;
     public GameObject quitPanel;
     public GameObject leaderboardPanel;
+    public GameObject achievementsPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class MainMenu : MonoBehaviour
         aboutPanel.SetActive(false);
         quitPanel.SetActive(false);
         leaderboardPanel.SetActive(false);
+        achievementsPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -46,5 +48,9 @@ public class MainMenu : MonoBehaviour
     public void LeaderBoard()
     {
         leaderboardPanel.SetActive(true);
+    }
+    public void Achievements()
+    { 
+        achievementsPanel.SetActive(true);
     }
 }
