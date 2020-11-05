@@ -387,14 +387,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 912426850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b173b05bc51570c41bca67f4cee2caca, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e93e52daddd58742831cf59c2b37249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionsPanel: {fileID: 0}
-  aboutPanel: {fileID: 0}
-  quitPanel: {fileID: 0}
-  leaderboardPanel: {fileID: 0}
-  achievementsPanel: {fileID: 0}
 --- !u!4 &912426852
 Transform:
   m_ObjectHideFlags: 0
