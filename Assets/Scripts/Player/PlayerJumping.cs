@@ -7,18 +7,18 @@ public class PlayerJumping : MonoBehaviour
     // Put under player object, in control of jumping
     // **Note that in Project Settings, the two inputs for "Jumping" are "Space" and "Left MB"
     Rigidbody2D myRb;
-    public float jumpForceDefault = 10f; // default jump force, baseline
+    public float jumpForceDefault; // default jump force, baseline
     float jumpForce; // actual jump force being used in code
-    public float jumpForceMax = 15f; // jump force limit
+    public float jumpForceMax; // jump force limit
     public float jumpForceDifference = 0.1f; // change in jump force when key held
-    public bool isGrounded; // grounded check
+    public bool isGrounded; // grounded check, used by GroundedCheck script
     public bool isJumping; // jumping check
+
     void Start()
     {
+        myRb = GetComponent<Rigidbody2D>();
         // initializze jump force
         jumpForce = jumpForceDefault;
-
-        myRb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -52,13 +52,5 @@ public class PlayerJumping : MonoBehaviour
         isJumping = false;
         // revert back to default jump force after each jump
         jumpForce = jumpForceDefault;
-    }
-
-    // grounded check (with the second box collider, which is a trigger)
-    void OnTriggerStay2D(Collider2D activator) {
-        isGrounded = true;
-    }
-    void OnTriggerExit2D(Collider2D activator) {
-        isGrounded = false;
     }
 }
