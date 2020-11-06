@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerJumping : MonoBehaviour
 {
     // Put under player object, in control of jumping
     // **Note that in Project Settings, the two inputs for "Jumping" are "Space" and "Left MB"
