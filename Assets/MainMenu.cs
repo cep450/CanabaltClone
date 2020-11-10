@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 //Usage: place this on a menuManager gameobject that you drag into the scene
 public class MainMenu : MonoBehaviour
 {
+    //assign all in inspector
     public GameObject optionsPanel;
     public GameObject aboutPanel;
     public GameObject quitPanel;
@@ -14,7 +15,11 @@ public class MainMenu : MonoBehaviour
     public GameObject leadLocalPanel;
     public GameObject leadFriendsPanel;
     public GameObject leadAllTimePanel;
-    public bool leaderboardWorld;
+    public GameObject graphicsSettings;
+    public GameObject soundSettings;
+    public GameObject gameplaySettings;
+
+  
     
 
     // Start is called before the first frame update
@@ -28,6 +33,9 @@ public class MainMenu : MonoBehaviour
         leadAllTimePanel.SetActive(false);
         leadFriendsPanel.SetActive(false);
         leadLocalPanel.SetActive(false);
+        graphicsSettings.SetActive(false);
+        soundSettings.SetActive(false);
+        gameplaySettings.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,11 +48,42 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+    public void OptionsBackButton()
+    {
+        optionsPanel.SetActive(true);
+        graphicsSettings.SetActive(false);
+        soundSettings.SetActive(false);
+        gameplaySettings.SetActive(false);
+    }
+
+
 
     public void Options()
     {
         optionsPanel.SetActive(true);
     }
+    public void SoundSettings()
+    {
+        graphicsSettings.SetActive(false);
+        soundSettings.SetActive(true);
+        gameplaySettings.SetActive(false);
+        optionsPanel.SetActive(false);
+    }
+    public void GraphicsSettings()
+    {
+        graphicsSettings.SetActive(true);
+        soundSettings.SetActive(false);
+        gameplaySettings.SetActive(false);
+        optionsPanel.SetActive(false);
+    }
+    public void GameplaySettings()
+    {
+        graphicsSettings.SetActive(false);
+        soundSettings.SetActive(false);
+        gameplaySettings.SetActive(true);
+        optionsPanel.SetActive(false);
+    }
+
     public void About()
     {
         aboutPanel.SetActive(true);
