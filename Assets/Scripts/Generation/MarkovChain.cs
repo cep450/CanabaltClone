@@ -11,7 +11,7 @@ using UnityEngine;
 public class MarkovChain : MonoBehaviour
 {
 
-    public RigidBody2D player; //reference to the player- SET IN INSPECTOR!
+    public Rigidbody2D player; //reference to the player- SET IN INSPECTOR!
 
     Chain chain;  
 
