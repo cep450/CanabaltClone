@@ -25,12 +25,7 @@ public class PlayerJumping : MonoBehaviour
     {
         // build up jump force while jumping key is held
         if (Input.GetButton("Jump") && isGrounded) {
-            // adding jump force with a slight difference each frame jump is held
-            jumpForce += jumpForceDifference;
-            // there is a thresold for jump force, will revert back to the max jump force is exceeding threshold
-            if (jumpForce >= jumpForceMax) {
-                jumpForce = jumpForceMax;
-            }
+            Jump_Charge();
         }
         // run jumping code at the frame that jump key is released
         if (Input.GetButtonUp("Jump") && isGrounded) {
@@ -52,5 +47,16 @@ public class PlayerJumping : MonoBehaviour
         isJumping = false;
         // revert back to default jump force after each jump
         jumpForce = jumpForceDefault;
+    }
+
+    // jump force charging
+    void Jump_Charge()
+    {
+        // adding jump force with a slight difference each frame jump is held
+        jumpForce += jumpForceDifference;
+        // there is a thresold for jump force, will revert back to the max jump force is exceeding threshold
+        if (jumpForce >= jumpForceMax) {
+            jumpForce = jumpForceMax;
+        }
     }
 }

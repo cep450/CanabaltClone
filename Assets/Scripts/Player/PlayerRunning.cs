@@ -11,7 +11,6 @@ public class PlayerRunning : MonoBehaviour
     public float runningSpeedMax; // max speed to run at
     public float runningSpeedDifference = 0.01f; // change in running speed as run goes on
     public float runningSpeedSlowdown = 5f;
-    public bool boxCollided = false; // check if collided with box, if so reduce speed, used by CollisionCheck script
     
     float distanceTotal; // total distance traveled by player, also the score
     float xCurrent; // current distance to origin, controlling to snap player back
@@ -32,11 +31,6 @@ public class PlayerRunning : MonoBehaviour
         if (runningSpeed > runningSpeedMax) {
             runningSpeed = runningSpeedMax;
         }
-        // collided with box (obstacles)
-        if (boxCollided) {
-            runningSpeed -= runningSpeedSlowdown;
-            boxCollided = false;
-        }
 
         // runs
         myRb.velocity = new Vector2(runningSpeed, myRb.velocity.y);
@@ -55,5 +49,11 @@ public class PlayerRunning : MonoBehaviour
     }
     public float getSpeed() {
         return runningSpeed;
+    }
+
+    // slow player down
+    public void Slow_Down()
+    {
+        runningSpeed -= runningSpeedSlowdown;
     }
 }
