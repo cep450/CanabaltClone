@@ -649,6 +649,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveLeft: {x: 0.05, y: 0}
   runDistance: 0
+  distanceText: {fileID: 238758871}
+  gameOverPanel: {fileID: 1997076153}
 --- !u!1 &845635023
 GameObject:
   m_ObjectHideFlags: 0
