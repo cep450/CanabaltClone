@@ -9,7 +9,7 @@ public class CollisionCheck : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D activator) {
         if (activator == box) {
-            playerRunning.boxCollided = true;
+            playerRunning.Slow_Down();
         }
     }
 }
