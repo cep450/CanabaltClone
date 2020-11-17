@@ -55,5 +55,17 @@ public class PlayerRunning : MonoBehaviour
     public void Slow_Down()
     {
         runningSpeed -= runningSpeedSlowdown;
+
+        //todo
+        // roll
+    }
+
+    // player death
+    public void Die()
+    {
+        runningSpeedMax = 0;
+
+        //todo
+        // trigger death state
     }
 }

@@ -5,11 +5,15 @@ using UnityEngine;
 public class CollisionCheck : MonoBehaviour
 {
     public PlayerRunning playerRunning; // assign to PlayerRunning script
-    public Collider2D box; // assign to collider on box (obstacles)
-
+    
     void OnTriggerEnter2D(Collider2D activator) {
-        if (activator == box) {
+        if (activator.tag == "Box") {
             playerRunning.Slow_Down();
         }
+
+        if (activator.tag == "Wall") {
+            playerRunning.Die();
+        }
+
     }
 }

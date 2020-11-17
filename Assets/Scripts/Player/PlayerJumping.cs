@@ -59,4 +59,10 @@ public class PlayerJumping : MonoBehaviour
             jumpForce = jumpForceMax;
         }
     }
+
+    //todo
+    // play jump_up animation
+    // play fall aniation when falling
+
+    // void roll
 }
