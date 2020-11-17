@@ -37,7 +37,7 @@ public class PlayerRunning : MonoBehaviour
 
         // position controls
 
-        Debug.Log(distanceTotal);
+        //Debug.Log(distanceTotal);
     }
 
     // getter functions to find out speed & location
