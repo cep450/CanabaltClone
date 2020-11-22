@@ -7,12 +7,12 @@ public class Generator : MonoBehaviour
 
     public Rigidbody2D player;
 
-    public Transform prefabEmpty;
-    public Transform prefabNormal;
-    public Transform prefabCracked;
-    public Transform prefabIBeam;
-    public Transform prefabWindow;
-    public Transform prefabCrane;
+    public GameObject prefabEmpty;
+    public GameObject prefabNormal;
+    public GameObject prefabCracked;
+    public GameObject prefabIBeam;
+    public GameObject prefabWindow;
+    public GameObject prefabCrane;
 
 
     float probabilityCracked = 0.25f;
@@ -20,29 +20,25 @@ public class Generator : MonoBehaviour
     float probabilityWindow = 0.25f;
     float probabilityCrane = 0.25f;
 
-    BuildingSpecial [] specialBuildings;
-
-
-
-
-
-
 
     struct BuildingStruct {
-        float probability;
-        Transform prefab;
-        bool isSpecial;
+        public float probability;
+        public GameObject prefab;
 
-        public BuildingStruct(float p, Transform pf, bool issp) {
+        public BuildingStruct(float p, GameObject pf) {
             probability = p;
             prefab = pf;
-            isSpecial = issp;
         }
     }
+    
+    BuildingStruct buildingEmpty;
+    BuildingStruct buildingNormal;
+    BuildingStruct buildingCracked;
+    BuildingStruct buildingIBeam;
+    BuildingStruct buildingWindow;
+    BuildingStruct buildingCrane;
 
-    //this would happen in start 
-    //BuildingStruct buildingNormal = new BuildingStruct(1, prefabNormal, false);
-    //BuildingStruct buildingCracked = new BuildingStruct(0.25, prefabCracked, true);
+    BuildingStruct [] specialBuildings;
 
 
 
@@ -53,14 +49,17 @@ public class Generator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        //init special buildings
-        BuildingCracked buildingCracked = new BuildingCracked();
-        BuildingWindow buildingWindow = new BuildingWindow();
-        BuildingIBeam buildingIBeam = new BuildingIBeam();
-        BuildingCrane buildingCrane = new BuildingCrane();
-        
-        specialBuildings = new BuildingSpecial [] {buildingCracked, buildingWindow, buildingIBeam, buildingCrane};
+
+        //init everything 
+
+        buildingEmpty = new BuildingStruct(1, prefabEmpty);
+        buildingNormal = new BuildingStruct(1, prefabNormal);
+        buildingCracked = new BuildingStruct(probabilityCracked, prefabCracked);
+        buildingIBeam = new BuildingStruct(probabilityIBeam, prefabIBeam);
+        buildingWindow = new BuildingStruct(probabilityWindow, prefabWindow);
+        buildingCrane = new BuildingStruct(probabilityCrane, prefabCrane);
+
+        specialBuildings = new BuildingStruct [] {buildingCracked, buildingIBeam, buildingWindow, buildingCrane};
 
         generateStartingBuilding();
     }
@@ -75,33 +74,80 @@ public class Generator : MonoBehaviour
 
         //generate empty space
 
-        //pick what building type to generate based on the normal building counter 
+        float spaceLength = generateSpaceLength();
+        BuildingCreator newEmptySpaceScript = Instantiate(buildingEmpty.prefab).GetComponent<BuildingCreator>();
+        newEmptySpaceScript.generate(0, spaceLength);
+        //move the position of the generator based on the length of the gap
+        updatePosition(0, spaceLength);
+
         
 
-    }
+        //generate the building 
 
+        float buildingLength = generateBuildingLength();
+        float buildingHeightDiff = generateBuildingHeightDiff();
+        GameObject buildingPrefab = pickBuildingPrefab();
 
-    generateEmptySpace() {
+        BuildingCreator newBuildingScript = Instantiate(buildingPrefab).GetComponent<BuildingCreator>();
+        newBuildingScript.generate(buildingHeightDiff, buildingLength);
 
-    }
-
-    generateNormalBuilding() {
-
-    }
-
-    generateSpecialBuilding() {
-
-    }
-
-    generateStartingBuilding() {
+        //move the position of the generator based on the length of the new building
+        updatePosition(buildingHeightDiff, buildingLength);
 
     }
 
+    void updatePosition(float heightDiff, float length) {
+        transform.Translate(new Vector3(length, heightDiff, 0));
+    }
 
+    GameObject pickBuildingPrefab() {
+
+        //TODO
+        //pick what building type to generate based on the normal building counter 
+        return buildingNormal.prefab;
+    }
+
+    GameObject pickSpecialBuilding() {
+
+        float rand = Random.Range(0f,1f);
+        float tracker = 0;
+        GameObject buildingToReturn;
+        int i = 0;
+        do {
+            tracker += specialBuildings[i].probability;
+            buildingToReturn = specialBuildings[i].prefab;
+            i++;
+        } while(tracker <= rand && i < specialBuildings.Length);
+
+        return buildingToReturn;
+    }
+
+    float generateBuildingHeightDiff() {
+
+        //TODO
+        return 0;
+    }
+
+    float generateBuildingLength() {
+
+        //TODO
+        return 0;
+    }
+
+    float generateSpaceLength() {
+
+        //TODO
+        return 0;
+    }
+
+    void generateStartingBuilding() {
+
+    }
 
 }
 
 
+/*
 public abstract class Building {
 
     Transform prefab;
@@ -159,4 +205,4 @@ public class BuildingCrane : BuildingSpecial {
 
 
 
-
+*/
