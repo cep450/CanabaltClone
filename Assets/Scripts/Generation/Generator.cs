@@ -81,7 +81,6 @@ public class Generator : MonoBehaviour
         updatePosition(0, spaceLength);
 
         
-
         //generate the building 
 
         float buildingLength = generateBuildingLength();

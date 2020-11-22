@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5152100007804661458}
+  - component: {fileID: 2198657553544922228}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -30,3 +31,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2198657553544922228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493850565528422659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 487ce2f905223a14abd9f230dd3d59d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 6071366532394082399, guid: da91f2184ff20064581da5a90dada3a3, type: 3}
+  prefabEmpty: {fileID: 6436341227976471868, guid: 4bd5c03b46e0f2a4fbbca034a1fe12e3,
+    type: 3}
+  prefabNormal: {fileID: 1445756611616808952, guid: 764af841e2cc38d43916b21d07c5afb8,
+    type: 3}
+  prefabCracked: {fileID: 394019698013566388, guid: 58386215d03793a48aeefb856c5ae9e6,
+    type: 3}
+  prefabIBeam: {fileID: 7915681399561080689, guid: b6e14d4ff9a37c040a9fcd9de74f075a,
+    type: 3}
+  prefabWindow: {fileID: 2659107542496546595, guid: 38a4fcd576d115349bae9a4804e8089c,
+    type: 3}
+  prefabCrane: {fileID: 1225261217434812268, guid: fea966fd3b0b6774eb052f2dcd95a218,
+    type: 3}
