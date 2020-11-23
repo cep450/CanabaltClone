@@ -101,6 +101,8 @@ public class Generator : MonoBehaviour
 
     GameObject pickBuildingPrefab() {
 
+
+
         //TODO
         //pick what building type to generate based on the normal building counter 
         return buildingNormal.prefab;
@@ -136,6 +138,9 @@ public class Generator : MonoBehaviour
     float generateSpaceLength() {
 
         //TODO
+
+        //max size of the gaps is about 2/3 the horizontal 
+
         return 0;
     }
 
