@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1399842422637903584}
   - component: {fileID: 7866859938916916171}
   - component: {fileID: 5115931101618899639}
+  - component: {fileID: 2154000960802033145}
+  - component: {fileID: 913929206225711850}
   m_Layer: 0
   m_Name: BuildingCracked
   m_TagString: Untagged
@@ -110,6 +112,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2154000960802033145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394019698013566388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f7d26219ea9a14fa4d3c74807afd03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: -0.1
+--- !u!114 &913929206225711850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394019698013566388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc9a86fcf008c846be4d6f8a6034ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3716604815363250530
 GameObject:
   m_ObjectHideFlags: 0

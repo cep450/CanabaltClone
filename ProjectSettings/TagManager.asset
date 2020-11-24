@@ -6,8 +6,6 @@ TagManager:
   tags:
   - hitWall
   - deathTrigger
-  - sideTrigger
-  - bottomTrigger
   - Wall
   - Box
   - Floor
