@@ -7,61 +7,81 @@ public class PlayerJumping : MonoBehaviour
     // Put under player object, in control of jumping
     // **Note that in Project Settings, the two inputs for "Jumping" are "Space" and "Left MB"
     Rigidbody2D myRb;
+    Animator ani;
+    public Sprite preJump;
+
     public float jumpForceDefault; // default jump force, baseline
     float jumpForce; // actual jump force being used in code
     public float jumpForceMax; // jump force limit
-    public float jumpForceDifference = 0.1f; // change in jump force when key held
+
     public bool isGrounded; // grounded check, used by GroundedCheck script
-    public bool isJumping; // jumping check
+    public bool isJumping; // jumping 
+
+    private float jumpTimeCounter;
+    public float jumpTime;
 
     void Start()
     {
         myRb = GetComponent<Rigidbody2D>();
+        ani = GetComponent<Animator>();
         // initializze jump force
         jumpForce = jumpForceDefault;
     }
 
     void Update()
     {
-        // build up jump force while jumping key is held
-        if (Input.GetButton("Jump") && isGrounded) {
-            Jump_Charge();
-        }
-        // run jumping code at the frame that jump key is released
-        if (Input.GetButtonUp("Jump") && isGrounded) {
-            isJumping = true;
-        }
-    }
-
-    void FixedUpdate() {
-        // run jumping code
-        if (isJumping) {
+        // initialize jump
+        if (Input.GetButtonDown("Jump") && isGrounded) {
+            GetComponent<SpriteRenderer>().sprite = preJump;
             Jump();
         }
+        // mid-air holding for longer jump
+        if (Input.GetButton("Jump") && isJumping == true) {
+            Jump_Hold();
+        }
+        // fall
+        if (Input.GetButtonUp("Jump")) {
+            isJumping = false;
+        }
+
+        Jump_Animation();
+
+        Debug.Log(jumpTimeCounter);
     }
 
-    // jumping code
+    // jump code
     void Jump()
     {
-        myRb.velocity = new Vector2(myRb.velocity.x, jumpForce);
-        isJumping = false;
-        // revert back to default jump force after each jump
-        jumpForce = jumpForceDefault;
+        isJumping = true;
+        jumpTimeCounter = jumpTime;
+        myRb.velocity = Vector2.up * jumpForce;
     }
 
-    // jump force charging
-    void Jump_Charge()
+    // jump holding
+    void Jump_Hold()
     {
-        // adding jump force with a slight difference each frame jump is held
-        jumpForce += jumpForceDifference;
-        // there is a thresold for jump force, will revert back to the max jump force is exceeding threshold
-        if (jumpForce >= jumpForceMax) {
-            jumpForce = jumpForceMax;
+        if (jumpTimeCounter > 0) {
+            myRb.velocity = Vector2.up * jumpForce;
+            jumpTimeCounter -= Time.deltaTime;
+        }
+        else {
+            isJumping = false;
         }
     }
 
     //todo
-    // play jump_up animation
+    // jump animation
+    void Jump_Animation()
+    {
+        if (!isGrounded) 
+        {
+            ani.SetBool("isJumping", true);
+        }
+        else
+        {
+            ani.SetBool("isJumping", false);
+        }
+    }
     // play fall aniation when falling
 
     // void roll

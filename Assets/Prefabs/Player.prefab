@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6071366532394082394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6071366533625430167}
   - {fileID: 6071366533672521258}
@@ -101,18 +101,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.18, y: -0.05}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.24, y: 0.24}
+    oldSize: {x: 1.2, y: 1.2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.24}
+  m_Size: {x: 0.66, y: 1.09}
   m_EdgeRadius: 0
 --- !u!50 &6071366532394082399
 Rigidbody2D:
@@ -147,11 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe8df306c632dc46a40fb567bf3932a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  preJump: {fileID: 21300000, guid: cff083c286fb91f4aac8da5be750e528, type: 3}
   jumpForceDefault: 5
   jumpForceMax: 12
-  jumpForceDifference: 0.1
   isGrounded: 0
   isJumping: 0
+  jumpTime: 0.5
 --- !u!114 &6071366532394082387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,10 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1dbc5c0f80f7f144abf114fd5a5f4ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runningSpeedDefault: 15
-  runningSpeedMax: 25
-  runningSpeedDifference: 0.01
-  runningSpeedSlowdown: 5
+  playerJumping: {fileID: 6071366532394082397}
+  runningSpeedMax: 30
+  runningSpeedSlowDown: 0.3
   xMax: 100
 --- !u!95 &6302425278938176619
 Animator:
@@ -214,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6071366533625430160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.032, y: -0.025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6071366532394082392}
@@ -233,7 +233,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.12}
+  m_Offset: {x: -0.3, y: -0.64}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -244,7 +244,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.12, y: 0.03}
+  m_Size: {x: 0.36, y: 0.09}
   m_EdgeRadius: 0
 --- !u!114 &6071366533625430165
 MonoBehaviour:
@@ -304,7 +304,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06, y: 0}
+  m_Offset: {x: 0.18, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -315,7 +315,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.03, y: 0.19}
+  m_Size: {x: 0.03, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &6071366533672521256
 MonoBehaviour:
@@ -330,4 +330,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRunning: {fileID: 6071366532394082387}
-  box: {fileID: 0}
