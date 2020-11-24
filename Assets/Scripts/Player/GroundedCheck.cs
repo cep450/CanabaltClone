@@ -9,9 +9,13 @@ public class GroundedCheck : MonoBehaviour
     
     // grounded check
     void OnTriggerStay2D(Collider2D activator) {
-        playerJumping.isGrounded = true;
+        if (activator.tag == "Floor") {
+            playerJumping.isGrounded = true;
+        }
     }
     void OnTriggerExit2D(Collider2D activator) {
-        playerJumping.isGrounded = false;
+        if (activator.tag == "Floor") {
+            playerJumping.isGrounded = false;
+        }
     }
 }
