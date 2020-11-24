@@ -5,7 +5,7 @@ using UnityEngine;
 public class Generator : MonoBehaviour
 {
 
-    public Rigidbody2D player;
+    public PlayerRunning player;
 
     public GameObject prefabEmpty;
     public GameObject prefabNormal;
@@ -15,10 +15,26 @@ public class Generator : MonoBehaviour
     public GameObject prefabCrane;
 
 
+
+
+///////////// the tuning zone ///////////////
+
+    float minGapSize = 1f;
+    float maxGapSizeMultiplier = 2f/3f; //
+
+
+    int minNormalInARow = 3; //
+    int maxNormalInARow = 8; //
+    float probabilitySpecialBuilding = 0.2f;
+
+
     float probabilityCracked = 0.25f;
     float probabilityIBeam = 0.25f;
     float probabilityWindow = 0.25f;
     float probabilityCrane = 0.25f;
+
+/////////////////////////////////////////////
+
 
 
     struct BuildingStruct {
@@ -46,6 +62,14 @@ public class Generator : MonoBehaviour
 
     int normalBuildingsCounter = 0; //normal buldings in a row since last unusual building
 
+
+
+    //temporary timer //////////////////
+    int counter = 0;
+    int counterMax = 100;
+    ////////////////////////////////////
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +92,15 @@ public class Generator : MonoBehaviour
     void Update()
     {
         //TODO how to check when a new building needs to be generated?
+
+        //TEMPORARY timer /////////////////////////
+        if(counter > counterMax) {
+            counter = 0;
+            generateBuilding();
+        } else {
+            counter++;
+        }
+        /////////////////////////////////////////
     }
 
     void generateBuilding() {
@@ -83,7 +116,7 @@ public class Generator : MonoBehaviour
         
         //generate the building 
 
-        float buildingLength = generateBuildingLength();
+        float buildingLength = generateBuildingLength(spaceLength);
         float buildingHeightDiff = generateBuildingHeightDiff();
         GameObject buildingPrefab = pickBuildingPrefab();
 
@@ -101,11 +134,24 @@ public class Generator : MonoBehaviour
 
     GameObject pickBuildingPrefab() {
 
+        GameObject prefabToReturn = buildingNormal.prefab;
 
+        if(normalBuildingsCounter < minNormalInARow) {
+            normalBuildingsCounter++;
+        } else if(normalBuildingsCounter < maxNormalInARow{
+            float rand = Random.Range(0f, 1f);
+            if(rand <= probabilitySpecialBuilding * (normalBuildingsCounter - minNormalInARow)) {
+                normalBuildingsCounter = 0;
+            prefabToReturn = pickSpecialBuilding();
+            } else {
+                normalBuildingsCounter++;
+            }
+        } else {
+            normalBuildingsCounter = 0;
+            prefabToReturn = pickSpecialBuilding();
+        }
 
-        //TODO
-        //pick what building type to generate based on the normal building counter 
-        return buildingNormal.prefab;
+        return prefabToReturn;
     }
 
     GameObject pickSpecialBuilding() {
@@ -126,87 +172,46 @@ public class Generator : MonoBehaviour
     float generateBuildingHeightDiff() {
 
         //TODO
+
+
+
         return 0;
     }
 
-    float generateBuildingLength() {
+    float generateBuildingLength(float gapSize) {
 
-        //TODO
-        return 0;
+
+
+//TODO:
+        float widthOfScreen; //TODO figure out how to get this in like in-world size
+        float minBuildingLength = widthOfScreen - gapSize;
+        float maxBuildingLength = minBuildingLength * 2;
+
+        return Random.Range(minBuildingLength, maxBuildingLength);
+
     }
 
     float generateSpaceLength() {
 
-        //TODO
+        float maxGapSize = maxGapSizeMultiplier * player.getSpeed();
 
-        //max size of the gaps is about 2/3 the horizontal 
+        Debug.Log("max gap size:" + maxGapSize); //////////
 
-        return 0;
+        return Random.Range(minGapSize, maxGapSize);
+
     }
 
     void generateStartingBuilding() {
 
+
+
+
+
+
+
+
+
     }
 
 }
 
-
-/*
-public abstract class Building {
-
-    Transform prefab;
-
-    public void setPrefab(Transform p) {
-        prefab = p;
-    }
-
-    public abstract void generate();
-}
-
-public abstract class BuildingSpecial : Building {
-
-    float probability;
-
-    public void setProbability(float p) {
-        probability = p;
-    }
-
-
-}
-
-
-public class BuildingCracked : BuildingSpecial {
-
-    public override void generate() {
-        //generate the building
-    }
-
-}
-
-public class BuildingIBeam : BuildingSpecial {
-
-    public override void generate() {
-        //generate the building
-    }
-
-}
-public class BuildingWindow : BuildingSpecial {
-
-    public override void generate() {
-        //generate the building
-    }
-
-}
-
-public class BuildingCrane : BuildingSpecial {
-
-    public override void generate() {
-        //generate the building
-    }
-
-}
-
-
-
-
-*/
