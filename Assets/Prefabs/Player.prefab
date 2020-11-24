@@ -149,9 +149,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForceDefault: 5
   jumpForceMax: 12
-  jumpForceDifference: 0.1
   isGrounded: 0
   isJumping: 0
+  jumpTime: 0.5
 --- !u!114 &6071366532394082387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,10 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1dbc5c0f80f7f144abf114fd5a5f4ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runningSpeedDefault: 15
-  runningSpeedMax: 25
-  runningSpeedDifference: 0.01
-  runningSpeedSlowdown: 5
+  playerJumping: {fileID: 6071366532394082397}
+  runningSpeedMax: 30
+  runningSpeedSlowDown: 0.3
   xMax: 100
 --- !u!95 &6302425278938176619
 Animator:
