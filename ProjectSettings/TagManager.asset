@@ -7,6 +7,7 @@ TagManager:
   - hitWall
   - Wall
   - Box
+  - Floor
   layers:
   - Default
   - TransparentFX
