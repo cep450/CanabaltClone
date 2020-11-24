@@ -6,6 +6,7 @@ public class PlayerRunning : MonoBehaviour
 {
     // Put under player object, in control of running
     private Rigidbody2D myRb;
+    Animator ani;
 
     public PlayerJumping playerJumping; // assign to PlayerJumping script
 
@@ -21,12 +22,14 @@ public class PlayerRunning : MonoBehaviour
     void Start()
     {
         myRb = GetComponent<Rigidbody2D>();
+        ani = GetComponent<Animator>();
         // initialize running speed
         runningSpeed = 0f;
     }
 
     void FixedUpdate()
     {
+        ani.SetBool("isRolling", false);
         Speed_Up();
         // runs
         myRb.velocity = new Vector2(runningSpeed, myRb.velocity.y);
@@ -73,9 +76,7 @@ public class PlayerRunning : MonoBehaviour
     public void Slow_Down()
     {
         runningSpeed = runningSpeed * runningSpeedSlowDown;
-
-        //todo
-        // roll
+        ani.SetBool("isRolling", true);
     }
 
     // player death
