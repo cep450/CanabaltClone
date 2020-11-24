@@ -8,6 +8,9 @@ TagManager:
   - deathTrigger
   - sideTrigger
   - bottomTrigger
+  - Wall
+  - Box
+  - Floor
   layers:
   - Default
   - TransparentFX
