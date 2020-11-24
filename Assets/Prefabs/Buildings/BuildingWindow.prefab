@@ -229,9 +229,10 @@ GameObject:
   m_Component:
   - component: {fileID: 38060388055897129}
   - component: {fileID: 4133519268947177809}
+  - component: {fileID: 8543908013421618638}
   m_Layer: 0
   m_Name: SideTriggerLower
-  m_TagString: sideTrigger
+  m_TagString: deathTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,6 +277,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8543908013421618638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5913569248582194035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf192e7c23f65642a0e1c47f56ac019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathMessage: missing another window
 --- !u!1 &7893121367985523136
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,9 +300,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7055462842086329453}
   - component: {fileID: 8156334957161223170}
+  - component: {fileID: 1893395921861593592}
   m_Layer: 0
   m_Name: SideTriggerUpper
-  m_TagString: sideTrigger
+  m_TagString: deathTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -333,3 +348,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1893395921861593592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7893121367985523136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf192e7c23f65642a0e1c47f56ac019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathMessage: missing another window

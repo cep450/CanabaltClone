@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8610062551201069884}
   - component: {fileID: 4401269457647958245}
+  - component: {fileID: 3501714801144182104}
   m_Layer: 0
   m_Name: BottomTrigger
-  m_TagString: bottomTrigger
+  m_TagString: deathTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,6 +58,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3501714801144182104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138864712352030705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf192e7c23f65642a0e1c47f56ac019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathMessage: missing a crane completely
 --- !u!1 &1225261217434812268
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,9 +164,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8269588009961068753}
   - component: {fileID: 4150716351708450372}
+  - component: {fileID: 5640670979596485123}
   m_Layer: 0
   m_Name: SideTrigger
-  m_TagString: sideTrigger
+  m_TagString: deathTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,3 +212,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5640670979596485123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7211211530761459358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf192e7c23f65642a0e1c47f56ac019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathMessage: somehow hitting the side of a crane

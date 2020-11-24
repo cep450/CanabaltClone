@@ -123,6 +123,9 @@ public class Generator : MonoBehaviour
         BuildingCreator newBuildingScript = Instantiate(buildingPrefab).GetComponent<BuildingCreator>();
         newBuildingScript.generate(buildingHeightDiff, buildingLength);
 
+        //TODO generate boxes 
+        
+
         //move the position of the generator based on the length of the new building
         updatePosition(buildingHeightDiff, buildingLength);
 
@@ -138,7 +141,7 @@ public class Generator : MonoBehaviour
 
         if(normalBuildingsCounter < minNormalInARow) {
             normalBuildingsCounter++;
-        } else if(normalBuildingsCounter < maxNormalInARow{
+        } else if(normalBuildingsCounter < maxNormalInARow) {
             float rand = Random.Range(0f, 1f);
             if(rand <= probabilitySpecialBuilding * (normalBuildingsCounter - minNormalInARow)) {
                 normalBuildingsCounter = 0;
@@ -184,7 +187,8 @@ public class Generator : MonoBehaviour
 
 //TODO:
         float widthOfScreen; //TODO figure out how to get this in like in-world size
-        float minBuildingLength = widthOfScreen - gapSize;
+        //float minBuildingLength = widthOfScreen - gapSize;
+                    float minBuildingLength = 1;
         float maxBuildingLength = minBuildingLength * 2;
 
         return Random.Range(minBuildingLength, maxBuildingLength);

@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 648615932784883511}
   - component: {fileID: 5672059176520818467}
+  - component: {fileID: 147435638904999584}
   m_Layer: 0
   m_Name: BuildingSideTrigger
-  m_TagString: sideTrigger
+  m_TagString: deathTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,6 +58,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &147435638904999584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2584519678468305152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf192e7c23f65642a0e1c47f56ac019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathMessage: somehow hitting the side of an I-beam
 --- !u!1 &3509802882007555481
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,9 +81,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6104068759799943570}
   - component: {fileID: 4432956640092525568}
+  - component: {fileID: 4210308493951912499}
   m_Layer: 0
   m_Name: BottomTrigger
-  m_TagString: bottomTrigger
+  m_TagString: deathTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,6 +129,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4210308493951912499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3509802882007555481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf192e7c23f65642a0e1c47f56ac019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathMessage: missing an I-beam completely
 --- !u!1 &7915681399561080689
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +153,6 @@ GameObject:
   - component: {fileID: 7915681399561080694}
   - component: {fileID: 7915681399561080695}
   - component: {fileID: 7915681399561080688}
-  - component: {fileID: 7871075229121274676}
   m_Layer: 0
   m_Name: BuildingIBeam
   m_TagString: Untagged
@@ -225,16 +252,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7871075229121274676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7915681399561080689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f7d26219ea9a14fa4d3c74807afd03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 0.1
