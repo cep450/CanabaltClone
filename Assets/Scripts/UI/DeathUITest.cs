@@ -11,6 +11,7 @@ public class DeathUITest : MonoBehaviour
     public int runDistance; //tracks how much youve moved 
     public Text distanceText;
     public GameObject gameOverPanel;
+    public PlayerRunning playerRun;
     
 
 
@@ -47,7 +48,7 @@ public class DeathUITest : MonoBehaviour
             Debug.Log("youve hit me! :(");
             //you die!!!! >:^)))
             gameOverPanel.SetActive(true);//activate THE GAME OVER panel 
-            distanceText.text = "You ran " + runDistance + " before hitting a wall and tumbling to your death";//in that panel showcase the score + the death message 
+            distanceText.text = "You ran " + playerRun.distanceTotal + " before hitting a wall and tumbling to your death";//in that panel showcase the score + the death message 
 
         }
 

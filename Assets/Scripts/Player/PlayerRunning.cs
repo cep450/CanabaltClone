@@ -15,7 +15,7 @@ public class PlayerRunning : MonoBehaviour
     private float runningSpeedDifference = 1f; // change in running speed as run goes on
     public float runningSpeedSlowDown = 0.3f;
     
-    float distanceTotal; // total distance traveled by player, also the score
+    public float distanceTotal; // total distance traveled by player, also the score
     float xCurrent; // current distance to origin, controlling to snap player back
     public float xMax = 100; // distance threshold, when reached snap player back
     
@@ -85,7 +85,7 @@ public class PlayerRunning : MonoBehaviour
         runningSpeedMax = 0;
 
         //todo
-        // trigger death state
+        // trigger death state (shown in death UI test)
     }
 
     // getter functions to find out speed & location
