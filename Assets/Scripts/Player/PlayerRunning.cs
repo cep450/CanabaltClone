@@ -77,8 +77,10 @@ public class PlayerRunning : MonoBehaviour
     // slow player down when hitting obstacles
     public void Slow_Down()
     {
-        runningSpeed = runningSpeed * runningSpeedSlowDown;
-        ani.SetBool("isRolling", true);
+        if (playerJumping.isGrounded == true) {
+            runningSpeed = runningSpeed * runningSpeedSlowDown;
+            ani.SetBool("isRolling", true);
+        }
     }
 
     // player death
