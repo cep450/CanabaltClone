@@ -18,6 +18,8 @@ public class PlayerRunning : MonoBehaviour
     public float distanceTotal; // total distance traveled by player, also the score
     float xCurrent; // current distance to origin, controlling to snap player back
     public float xMax = 100; // distance threshold, when reached snap player back
+
+    public bool death = false;
     
     void Start()
     {
@@ -83,9 +85,7 @@ public class PlayerRunning : MonoBehaviour
     public void Die()
     {
         runningSpeedMax = 0;
-
-        //todo
-        // trigger death state (shown in death UI test)
+        death = true;
     }
 
     // getter functions to find out speed & location
