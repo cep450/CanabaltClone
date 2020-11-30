@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preJump: {fileID: 21300000, guid: cff083c286fb91f4aac8da5be750e528, type: 3}
-  jumpForceDefault: 5
+  jumpForceDefault: 6
   jumpForceMax: 12
   isGrounded: 0
   isJumping: 0
