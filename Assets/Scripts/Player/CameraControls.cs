@@ -21,7 +21,7 @@ public class CameraControls : MonoBehaviour
         // define player position each frame
         playerPosition = new Vector3(player.position.x, player.position.y, transform.position.z);
 
-        if (playerRunning.death != true) {
+        if (playerRunning.death != true) { // only follows when player isn't dead
             if (player.position.y >= -5f) { // starting camera position
                 target = new Vector3(10f, -4f, 0f);
                 transform.position = playerPosition + target;

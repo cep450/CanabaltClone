@@ -740,11 +740,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6071366532394082387, guid: da91f2184ff20064581da5a90dada3a3,
-        type: 3}
-      propertyPath: playerJumping
+    - target: {fileID: 513965725, guid: da91f2184ff20064581da5a90dada3a3, type: 3}
+      propertyPath: distanceText
       value: 
-      objectReference: {fileID: 513965723}
+      objectReference: {fileID: 303231391}
+    - target: {fileID: 513965725, guid: da91f2184ff20064581da5a90dada3a3, type: 3}
+      propertyPath: gameOverPanel
+      value: 
+      objectReference: {fileID: 182782995}
     - target: {fileID: 6071366532394082392, guid: da91f2184ff20064581da5a90dada3a3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -800,80 +803,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6071366532394082392, guid: da91f2184ff20064581da5a90dada3a3,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6071366532394082392, guid: da91f2184ff20064581da5a90dada3a3,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6071366532394082394, guid: da91f2184ff20064581da5a90dada3a3,
         type: 3}
       propertyPath: m_Name
       value: 'Player '
       objectReference: {fileID: 0}
-    - target: {fileID: 6071366532394082394, guid: da91f2184ff20064581da5a90dada3a3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6071366532394082398, guid: da91f2184ff20064581da5a90dada3a3,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6071366532394082398, guid: da91f2184ff20064581da5a90dada3a3,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da91f2184ff20064581da5a90dada3a3, type: 3}
---- !u!114 &513965723 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6071366532394082397, guid: da91f2184ff20064581da5a90dada3a3,
-    type: 3}
-  m_PrefabInstance: {fileID: 513965721}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 513965724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fe8df306c632dc46a40fb567bf3932a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &513965724 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6071366532394082394, guid: da91f2184ff20064581da5a90dada3a3,
-    type: 3}
-  m_PrefabInstance: {fileID: 513965721}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &513965725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 513965724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 465708793a839304eb3d1926b38a7ae4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveLeft: {x: 0, y: 0}
-  runDistance: 0
-  distanceText: {fileID: 303231391}
-  gameOverPanel: {fileID: 182782995}
-  playerRun: {fileID: 513965726}
 --- !u!114 &513965726 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6071366532394082387, guid: da91f2184ff20064581da5a90dada3a3,
     type: 3}
   m_PrefabInstance: {fileID: 513965721}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 513965724}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1dbc5c0f80f7f144abf114fd5a5f4ee, type: 3}
