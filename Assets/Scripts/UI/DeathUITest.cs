@@ -11,6 +11,7 @@ public class DeathUITest : MonoBehaviour
     public int runDistance; //tracks how much youve moved 
     public Text distanceText;
     public GameObject gameOverPanel;
+    public PlayerRunning playerRun;
     
 
 
