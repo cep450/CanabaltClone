@@ -6,7 +6,7 @@ public class PlayerRunning : MonoBehaviour
 {
     // Put under player object, in control of running
     private Rigidbody2D myRb;
-    Animator ani;
+    Animator ani; // animator
 
     public PlayerJumping playerJumping; // assign to PlayerJumping script
 
