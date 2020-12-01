@@ -18,6 +18,8 @@ public class PlayerRunning : MonoBehaviour
     public float distanceTotal; // total distance traveled by player, also the score
     float xCurrent; // current distance to origin, controlling to snap player back
     public float xMax = 100; // distance threshold, when reached snap player back
+
+    public bool death = false; // death boolean
     
     void Start()
     {
@@ -72,20 +74,20 @@ public class PlayerRunning : MonoBehaviour
         }
     }
 
-    // slow player down
+    // slow player down when hitting obstacles
     public void Slow_Down()
     {
-        runningSpeed = runningSpeed * runningSpeedSlowDown;
-        ani.SetBool("isRolling", true);
+        if (playerJumping.isGrounded == true) {
+            runningSpeed = runningSpeed * runningSpeedSlowDown;
+            ani.SetBool("isRolling", true);
+        }
     }
 
     // player death
     public void Die()
     {
         runningSpeedMax = 0;
-
-        //todo
-        // trigger death state (shown in death UI test)
+        death = true;
     }
 
     // getter functions to find out speed & location
