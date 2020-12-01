@@ -15,12 +15,28 @@ public class Generator : MonoBehaviour
     public GameObject prefabCrane;
 
 
+    float screenWidthInWorld;
+    float screenHeightInWorld;
+
+    float bottomOfScreen = 0; //could change but this is what i'm using
+
+    float maxBuildingHeight;
+    float minBuildingHeight;
+
 
 
 ///////////// the tuning zone ///////////////
 
+    float heightDiffSpeedMultiplier = 1f; //this is multiplied by the running speed to get the
+                                          //max positive vertical height difference between buildings
+
+    float heightAllowanceFromTop = 2f;
+    float heightAllowanceFromBottom = 1f;
+
     float minGapSize = 1f;
     float maxGapSizeMultiplier = 2f/3f; //
+
+    float minMinBuildingLength = 4f; //TODO- 96 pixels 
 
 
     int minNormalInARow = 3; //
@@ -74,6 +90,16 @@ public class Generator : MonoBehaviour
     void Start()
     {
 
+        //get the width and height of the screen in in-world units to use for generation
+
+        screenHeightInWorld = Camera.main.orthographicSize * 2;
+        screenWidthInWorld = screenHeightInWorld * Camera.main.aspect;
+
+        //
+
+        maxBuildingHeight = screenHeightInWorld - heightAllowanceFromTop;
+        minBuildingHeight = bottomOfScreen + heightAllowanceFromBottom;
+
         //init everything 
 
         buildingEmpty = new BuildingStruct(1, prefabEmpty);
@@ -85,7 +111,8 @@ public class Generator : MonoBehaviour
 
         specialBuildings = new BuildingStruct [] {buildingCracked, buildingIBeam, buildingWindow, buildingCrane};
 
-        generateStartingBuilding();
+        //TODO final vers will generate a special starting building a window building
+        //generateStartingBuilding();
     }
 
     // Update is called once per frame
@@ -117,22 +144,24 @@ public class Generator : MonoBehaviour
         //generate the building 
 
         float buildingLength = generateBuildingLength(spaceLength);
-        float buildingHeightDiff = generateBuildingHeightDiff();
+        float buildingHeight = generateBuildingHeight();
         GameObject buildingPrefab = pickBuildingPrefab();
 
         BuildingCreator newBuildingScript = Instantiate(buildingPrefab).GetComponent<BuildingCreator>();
-        newBuildingScript.generate(buildingHeightDiff, buildingLength);
+        newBuildingScript.generate(buildingHeight, buildingLength);
+
 
         //TODO generate boxes 
         
 
         //move the position of the generator based on the length of the new building
-        updatePosition(buildingHeightDiff, buildingLength);
+        updatePosition(buildingHeight, buildingLength);
 
     }
 
-    void updatePosition(float heightDiff, float length) {
-        transform.Translate(new Vector3(length, heightDiff, 0));
+    void updatePosition(float height, float length) {
+        transform.Translate(new Vector3(length, height - transform.position.y, 0f));
+        
     }
 
     GameObject pickBuildingPrefab() {
@@ -172,23 +201,21 @@ public class Generator : MonoBehaviour
         return buildingToReturn;
     }
 
-    float generateBuildingHeightDiff() {
+    float generateBuildingHeight() {
 
-        //TODO
+        //falling buildings. ummm 
+        //maybe they set the thing lower when they generate or something 
 
+        float jumpHeightAllowance = player.getSpeed() * heightDiffSpeedMultiplier;
+        float maxHeight = Mathf.Min(transform.position.y + jumpHeightAllowance, maxBuildingHeight);
 
+        return Random.Range(minBuildingHeight, maxHeight);
 
-        return 0;
     }
 
     float generateBuildingLength(float gapSize) {
 
-
-
-//TODO:
-        float widthOfScreen; //TODO figure out how to get this in like in-world size
-        //float minBuildingLength = widthOfScreen - gapSize;
-                    float minBuildingLength = 1;
+        float minBuildingLength = Mathf.Max(screenWidthInWorld - gapSize, minMinBuildingLength);
         float maxBuildingLength = minBuildingLength * 2;
 
         return Random.Range(minBuildingLength, maxBuildingLength);
@@ -199,7 +226,7 @@ public class Generator : MonoBehaviour
 
         float maxGapSize = maxGapSizeMultiplier * player.getSpeed();
 
-        Debug.Log("max gap size:" + maxGapSize); //////////
+        Debug.Log("max gap size:" + maxGapSize); /////////////
 
         return Random.Range(minGapSize, maxGapSize);
 
@@ -210,7 +237,7 @@ public class Generator : MonoBehaviour
 
 
 
-
+        //TODO
 
 
 

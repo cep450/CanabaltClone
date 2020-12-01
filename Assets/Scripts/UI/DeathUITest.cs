@@ -52,7 +52,7 @@ public class DeathUITest : MonoBehaviour
             Debug.Log("youve hit me! :(");
             //you die!!!! >:^)))
             gameOverPanel.SetActive(true);//activate THE GAME OVER panel 
-            distanceText.text = "You ran " + runDistance + "m before " + deathMessage + ".";//in that panel showcase the score + the death message 
+            distanceText.text = "You ran " + playerRun.distanceTotal + "m before " + deathMessage + ".";//in that panel showcase the score + the death message 
 
         }
 
