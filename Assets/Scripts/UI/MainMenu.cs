@@ -48,6 +48,10 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
+    public void BackToMain()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 
 
     public void BackButton()
