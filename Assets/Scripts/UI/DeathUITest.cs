@@ -11,6 +11,7 @@ public class DeathUITest : MonoBehaviour
     public int runDistance; //tracks how much youve moved 
     public Text distanceText;
     public GameObject gameOverPanel;
+    public GameObject winPanel;
     public PlayerRunning playerRun;
     
 
@@ -19,6 +20,7 @@ public class DeathUITest : MonoBehaviour
     void Start()
     {
         gameOverPanel.SetActive(false);
+        winPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -55,6 +57,14 @@ public class DeathUITest : MonoBehaviour
             distanceText.text = "You ran " + playerRun.distanceTotal + "m before " + deathMessage + ".";//in that panel showcase the score + the death message 
 
         }
+        if (activator.gameObject.tag == "Win")
+        {
+            Debug.Log("youve hit me NICELY this time");
+            //you WIN!!!! :^)))
+            winPanel.SetActive(true);//activate THE WIN panel 
+          
+        }
+
 
     }
 

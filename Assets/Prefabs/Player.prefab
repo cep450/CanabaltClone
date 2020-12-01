@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6071366532394082397}
   - component: {fileID: 6071366532394082387}
   - component: {fileID: 6302425278938176619}
+  - component: {fileID: 513965725}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -148,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preJump: {fileID: 21300000, guid: cff083c286fb91f4aac8da5be750e528, type: 3}
-  jumpForceDefault: 5
+  jumpForceDefault: 6
   jumpForceMax: 12
   isGrounded: 0
   isJumping: 0
@@ -168,7 +169,9 @@ MonoBehaviour:
   playerJumping: {fileID: 6071366532394082397}
   runningSpeedMax: 30
   runningSpeedSlowDown: 0.3
+  distanceTotal: 0
   xMax: 100
+  death: 0
 --- !u!95 &6302425278938176619
 Animator:
   serializedVersion: 3
@@ -188,6 +191,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &513965725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6071366532394082394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465708793a839304eb3d1926b38a7ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveLeft: {x: 0, y: 0}
+  runDistance: 0
+  distanceText: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  playerRun: {fileID: 6071366532394082387}
 --- !u!1 &6071366533625430160
 GameObject:
   m_ObjectHideFlags: 0

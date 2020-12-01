@@ -31,7 +31,7 @@ public class PlayerJumping : MonoBehaviour
     void Update()
     {
         // initialize jump
-        if (Input.GetButtonDown("Jump") && isGrounded) {
+        if (Input.GetButtonDown("Jump") && isGrounded && !ani.GetCurrentAnimatorStateInfo(0).IsName("Roll Animation")) { // jump when on the ground and not rolling
             GetComponent<SpriteRenderer>().sprite = preJump;
             Jump();
         }

@@ -20,7 +20,7 @@ public class backGround : MonoBehaviour
         float temp =(cam.transform.position.x * (1 - parralaxEffect));
         float dist = (cam.transform.position.x * parralaxEffect);
 
-        transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
+        transform.position = new Vector3(startPos + dist, cam.transform.position.y-0.7f, 60f);
 
         if(temp > startPos + length) startPos += length;
         else if(temp < startPos - length) startPos -= length;
