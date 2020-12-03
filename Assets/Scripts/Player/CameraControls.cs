@@ -20,10 +20,10 @@ public class CameraControls : MonoBehaviour
 
         if (playerRunning.death != true) { // only follows when player isn't dead
             if (player.position.x < gate) { // start in-game follow after exiting first building
-                target = new Vector3(10f, -4f, 0f);
+                target = new Vector3(7f, -4f, 0f);
             }
             else { // camera smooth follow
-                target = new Vector3(10f, 0f, 0f);
+                target = new Vector3(7f, 0f, 0f);
             }
             transform.position = Vector3.SmoothDamp(transform.position, target + playerPosition, ref velocity, 0.15f);
         }
