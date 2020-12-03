@@ -49,22 +49,22 @@ public class PlayerRunning : MonoBehaviour
         if (runningSpeed < 1)
         {
             runningSpeedDifference = 0.5f;
-            playerJumping.jumpTime = 0.05f;
+            playerJumping.jumpTime = 0.03f;
         }
         else if (runningSpeed < 5)
         {
             runningSpeedDifference = 0.3f;
-            playerJumping.jumpTime = 0.1f;
+            playerJumping.jumpTime = 0.08f;
         }
         else if (runningSpeed < 15)
         {
             runningSpeedDifference = 0.1f;
-            playerJumping.jumpTime = 0.25f;
+            playerJumping.jumpTime = 0.13f;
         }
         else if (runningSpeed < 30)
         {
             runningSpeedDifference = 0.01f;
-            playerJumping.jumpTime = 0.5f;
+            playerJumping.jumpTime = 0.25f;
         }
 
         // max out
