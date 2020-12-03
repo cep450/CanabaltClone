@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 5966418135179290500}
   - component: {fileID: 4471913384494686993}
   - component: {fileID: 8217797807519278288}
+  - component: {fileID: 6301275893067099391}
   m_Layer: 0
   m_Name: BuildingWindow
   m_TagString: Untagged
@@ -219,6 +220,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6301275893067099391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2659107542496546595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcfa6a26e4982894d941766eff96a140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5913569248582194035
 GameObject:
   m_ObjectHideFlags: 0

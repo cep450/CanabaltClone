@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//PURPOSE: generate tha buildings 
+//USEAGE: put on an empty object **AT X=0, Y=0**
+//and make sure to feed it building prefabs and a player :]
 public class Generator : MonoBehaviour
 {
 
@@ -18,7 +21,7 @@ public class Generator : MonoBehaviour
     float screenWidthInWorld;
     float screenHeightInWorld;
 
-    float bottomOfScreen = 0; //could change but this is what i'm using
+    float bottomOfScreen = 0; //y=0
 
     float maxBuildingHeight;
     float minBuildingHeight;
@@ -27,7 +30,7 @@ public class Generator : MonoBehaviour
 
 ///////////// the tuning zone ///////////////
 
-    float heightDiffSpeedMultiplier = 1f; //this is multiplied by the running speed to get the
+    float heightDiffSpeedMultiplier = 0.1f; //this is multiplied by the running speed to get the
                                           //max positive vertical height difference between buildings
 
     float heightAllowanceFromTop = 2f;
@@ -77,6 +80,7 @@ public class Generator : MonoBehaviour
     int texturePixelMultiple = 14; //pixels wide each texture is
 
     int normalBuildingsCounter = 0; //normal buldings in a row since last unusual building
+    float lastHeight = 1f;
 
 
 
@@ -121,9 +125,12 @@ public class Generator : MonoBehaviour
         //TODO how to check when a new building needs to be generated?
 
         //TEMPORARY timer /////////////////////////
+
         if(counter > counterMax) {
             counter = 0;
+
             generateBuilding();
+
         } else {
             counter++;
         }
@@ -135,32 +142,43 @@ public class Generator : MonoBehaviour
         //generate empty space
 
         float spaceLength = generateSpaceLength();
-        BuildingCreator newEmptySpaceScript = Instantiate(buildingEmpty.prefab).GetComponent<BuildingCreator>();
-        newEmptySpaceScript.generate(0, spaceLength);
-        //move the position of the generator based on the length of the gap
-        updatePosition(0, spaceLength);
 
+        //move the position of the generator based on the length of the gap
+        updatePosition(spaceLength);
+
+        BuildingCreator newEmptySpaceScript = Instantiate(buildingEmpty.prefab).GetComponent<BuildingCreator>();
+        newEmptySpaceScript.generate(0, spaceLength, transform.position.x);
         
+
         //generate the building 
 
         float buildingLength = generateBuildingLength(spaceLength);
         float buildingHeight = generateBuildingHeight();
         GameObject buildingPrefab = pickBuildingPrefab();
 
+        //move the position of the generator based on the length of the new building,
+        //and update the stored height value
+        updatePosition(buildingHeight, buildingLength);
+
         BuildingCreator newBuildingScript = Instantiate(buildingPrefab).GetComponent<BuildingCreator>();
-        newBuildingScript.generate(buildingHeight, buildingLength);
+        newBuildingScript.generate(buildingHeight, buildingLength, transform.position.x);
 
 
         //TODO generate boxes 
         
 
-        //move the position of the generator based on the length of the new building
-        updatePosition(buildingHeight, buildingLength);
+        
+        
 
     }
 
+    void updatePosition(float length) {
+        transform.Translate(new Vector3(length, 0f, 0f));
+    }
+
     void updatePosition(float height, float length) {
-        transform.Translate(new Vector3(length, height - transform.position.y, 0f));
+        lastHeight = height;
+        transform.Translate(new Vector3(length, 0f, 0f));
         
     }
 
@@ -207,7 +225,7 @@ public class Generator : MonoBehaviour
         //maybe they set the thing lower when they generate or something 
 
         float jumpHeightAllowance = player.getSpeed() * heightDiffSpeedMultiplier;
-        float maxHeight = Mathf.Min(transform.position.y + jumpHeightAllowance, maxBuildingHeight);
+        float maxHeight = Mathf.Min(lastHeight + jumpHeightAllowance, maxBuildingHeight);
 
         return Random.Range(minBuildingHeight, maxHeight);
 
@@ -225,8 +243,6 @@ public class Generator : MonoBehaviour
     float generateSpaceLength() {
 
         float maxGapSize = maxGapSizeMultiplier * player.getSpeed();
-
-        Debug.Log("max gap size:" + maxGapSize); /////////////
 
         return Random.Range(minGapSize, maxGapSize);
 

@@ -9,41 +9,48 @@ public class BuildingCreator : MonoBehaviour
     float height;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    /////TODO will also have sprite tiles 
+    //public sprite spriteCorner;
+    //public sprite spriteTop;
+    //public sprite spriteSide;
+    //public Sprite spriteMiddle;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void generate(float height, float length, float xpos) {
 
-    public void generate(float heightDiff, float length) {
+        //set the length- widen the base prefab 
+        Vector3 lengthVec3 = new Vector3(length * 1f, 1f, 1f);
+        transform.localScale += lengthVec3;
 
-        //set the length- widen the base prefab
-        //set the height position 
+        Debug.Log("length " + length + ", transform.localscale.x=" + transform.localScale.x);
 
-        //create a killplane for falling off the bottom of the screen (needed for falling buildings, ibeams, cranes)
-        //actually
-        //prefab should come with a killplane 
-        //which should be widened along with the building itself 
-        //yeah ok so the killplane will come with the thing 
-        //ACTUALLY
-        //killplane needs to be at a specific height compared to uhhh the top of the thing 
-        //so we actually need to set the position of the killplane and set the position of the side hitboxes
+        //but, make sure the children aren't scaled horizontally. (undo their scaling)
+        float lengthUndo = 1f/length;
+        Transform [] childTransforms = GetComponentsInChildren<Transform>();
+        foreach(Transform t in childTransforms) {
+            t.localScale = new Vector3(t.localScale.x * lengthUndo, t.localScale.y, t.localScale.z);
+        }
 
-        //however, we need something to create the side hitboxes so that they don't get widened 
-        //maybe a script on them? 
-        //or, modify them based on a tag 
 
-        //set y of killplane 
-        
-        //fix width of side hitboxes
+        //set the x position. but don't forget to account for the length
+        //(ie actual pos is minus half the length)
+        float xToTranslate = xpos - (length / 2f);
 
-        //tile its sprites (might put this in subclasses that override and call this via super)
+        //now, set that and set the height- move the building up from the baseline y=0
+        transform.Translate(xToTranslate, height, 0f);
+
+        //but, if there's a killplane, move it back down to 0 
+        foreach(Transform t in childTransforms) {
+            if(t.gameObject.name.Equals("Killplane")) { //has to be name cause tag is used- deathTrigger
+                t.Translate(0, -height, 0);
+            }
+        }
+
+
+        //finally, decorate it with sprites :]
+        //tile sprites, and 
+        //add a thing on top 
+
+        //TODO
 
     }
 

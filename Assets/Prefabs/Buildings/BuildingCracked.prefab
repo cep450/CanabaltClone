@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5115931101618899639}
   - component: {fileID: 2154000960802033145}
   - component: {fileID: 913929206225711850}
+  - component: {fileID: 1452383290635344969}
   m_Layer: 0
   m_Name: BuildingCracked
   m_TagString: Untagged
@@ -137,6 +138,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc9a86fcf008c846be4d6f8a6034ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1452383290635344969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394019698013566388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcfa6a26e4982894d941766eff96a140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3716604815363250530
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +233,7 @@ GameObject:
   - component: {fileID: 5209631904421077089}
   - component: {fileID: 2926694574938963235}
   m_Layer: 0
-  m_Name: BottomTrigger
+  m_Name: Killplane
   m_TagString: deathTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,7 +247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4436876346688868386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.375, z: 0}
   m_LocalScale: {x: 1, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 1399842422637903584}

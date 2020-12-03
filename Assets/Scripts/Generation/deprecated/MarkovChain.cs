@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//REPLACED BY Generator 
+
+
+
 //PURPOSE: markov chain for building generation
 //USEAGE: place on empty game object. will have a function to call to start it
 //going, and a function to call to stop it (e.g. when the player dies).
@@ -10,7 +15,8 @@ using UnityEngine;
 
 public class MarkovChain : MonoBehaviour
 {
-
+}
+/*
     public Rigidbody2D player; //reference to the player- SET IN INSPECTOR!
 
     //SET THESE IN INSPECTOR
@@ -74,7 +80,7 @@ player is moving faster.
 - get a reference to the player object in the inspector, or via code, and have it
 use that to access the player speed and position 
 */
-  
+/*
 
 struct generationGroup {
     float height;
@@ -115,7 +121,7 @@ public class Chain {
 
     Billboard billboard = new Billboard();
 */
-
+/*
     public Chain(string lvl, MarkovChain generatorObj) {
         initChain();
         currentLink = buildingFront;
@@ -176,7 +182,7 @@ public class Chain {
         billboard.addLinks(emptySpace);
         billboard.addChances(1);
 */      
-
+/*
     }
 
         public void iterate() {
@@ -319,3 +325,5 @@ public class Billboard : ChainLink {
         Chain.level = Chain.level + "#";
     }
 }
+
+*/
