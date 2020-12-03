@@ -12,7 +12,6 @@ public class PlayerJumping : MonoBehaviour
 
     public float jumpForceDefault; // default jump force, baseline
     float jumpForce; // actual jump force being used in code
-    public float jumpForceMax; // jump force limit
 
     public bool isGrounded; // grounded check, used by GroundedCheck script
     public bool isJumping; // jumping 
@@ -31,7 +30,7 @@ public class PlayerJumping : MonoBehaviour
     void Update()
     {
         // initialize jump
-        if (Input.GetButtonDown("Jump") && isGrounded && !ani.GetCurrentAnimatorStateInfo(0).IsName("Roll Animation")) { // jump when on the ground and not rolling
+        if (Input.GetButtonDown("Jump") && isGrounded) {
             GetComponent<SpriteRenderer>().sprite = preJump;
             Jump();
         }
