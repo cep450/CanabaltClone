@@ -84,7 +84,6 @@ public class PlayerJumping : MonoBehaviour
         }
     }
 
-    //todo
     // jump animation
     void Jump_Animation()
     {
@@ -97,7 +96,4 @@ public class PlayerJumping : MonoBehaviour
             ani.SetBool("isJumping", false);
         }
     }
-    // play fall aniation when falling
-
-    // void roll
 }

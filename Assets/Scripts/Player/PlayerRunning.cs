@@ -100,6 +100,5 @@ public class PlayerRunning : MonoBehaviour
     }
     public float getSpeed() {
         return runningSpeed;
-    }
-    
+    }  
 }
