@@ -94,11 +94,12 @@ public class PlayerRunning : MonoBehaviour
     public float getCurrentDistanceFromOrigin() {
         return xCurrent;
     }
+    */
     public float getDistanceTraveled() {
         return distanceTotal;
     }
     public float getSpeed() {
         return runningSpeed;
     }
-    */
+    
 }
