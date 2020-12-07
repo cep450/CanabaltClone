@@ -15,9 +15,11 @@ public class PlayerRunning : MonoBehaviour
     private float runningSpeedDifference = 1f; // change in running speed as run goes on
     public float runningSpeedSlowDown = 0.3f;
     
-    public float distanceTotal; // total distance traveled by player, also the score
+    public int distanceTotal; // total distance traveled by player, also the score
+    /*
     float xCurrent; // current distance to origin, controlling to snap player back
     public float xMax = 100; // distance threshold, when reached snap player back
+    */
 
     public bool death = false; // death boolean
     
@@ -27,18 +29,17 @@ public class PlayerRunning : MonoBehaviour
         ani = GetComponent<Animator>();
         // initialize running speed
         runningSpeed = 0f;
+        distanceTotal = 0;
     }
 
     void FixedUpdate()
     {
-        ani.SetBool("isRolling", false);
         Speed_Up();
         // runs
         myRb.velocity = new Vector2(runningSpeed, myRb.velocity.y);
-
-        // position controls
-
-        //Debug.Log();
+        distanceTotal = Mathf.RoundToInt(transform.position.x);
+        
+        //Debug.Log(distanceTotal);
     }
 
     // speed player up
@@ -77,10 +78,8 @@ public class PlayerRunning : MonoBehaviour
     // slow player down when hitting obstacles
     public void Slow_Down()
     {
-        if (playerJumping.isGrounded == true) {
-            runningSpeed = runningSpeed * runningSpeedSlowDown;
-            ani.SetBool("isRolling", true);
-        }
+        runningSpeed = runningSpeed * runningSpeedSlowDown;
+        ani.SetTrigger("RollTrigger");
     }
 
     // player death
@@ -91,6 +90,7 @@ public class PlayerRunning : MonoBehaviour
     }
 
     // getter functions to find out speed & location
+    /*
     public float getCurrentDistanceFromOrigin() {
         return xCurrent;
     }
@@ -100,4 +100,5 @@ public class PlayerRunning : MonoBehaviour
     public float getSpeed() {
         return runningSpeed;
     }
+    */
 }
