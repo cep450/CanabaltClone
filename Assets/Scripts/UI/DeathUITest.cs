@@ -45,12 +45,16 @@ public class DeathUITest : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D activator)
     {
         Debug.Log("youve hit me! :(");
-        if (activator.gameObject.tag == "hitWall")
+        if (activator.gameObject.tag == "deathTrigger")
         {
-            Debug.Log("youve hit me AGAIN :(((");
+
+            DeathTrigger deathTrigger = activator.gameObject.GetComponent<DeathTrigger>();
+            string deathMessage = deathTrigger.getDeathMessage();
+
+            Debug.Log("youve hit me! :(");
             //you die!!!! >:^)))
             gameOverPanel.SetActive(true);//activate THE GAME OVER panel 
-            distanceText.text = "You ran " + playerRun.distanceTotal + " before hitting a wall and tumbling to your death";//in that panel showcase the score + the death message 
+            distanceText.text = "You ran " + playerRun.distanceTotal + "m before " + deathMessage + ".";//in that panel showcase the score + the death message 
 
         }
         if (activator.gameObject.tag == "Win")

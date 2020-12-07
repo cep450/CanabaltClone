@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//REPLACED BY Generator 
+
+
+
 //PURPOSE: markov chain for building generation
 //USEAGE: place on empty game object. will have a function to call to start it
 //going, and a function to call to stop it (e.g. when the player dies).
@@ -10,18 +15,33 @@ using UnityEngine;
 
 public class MarkovChain : MonoBehaviour
 {
-
+}
+/*
     public Rigidbody2D player; //reference to the player- SET IN INSPECTOR!
+
+    //SET THESE IN INSPECTOR
+    public Transform buildingPrefabEmpty;
+    public Transform buildingPrefabStart;
+    public Transform buildingPrefabMid;
+    public Transform buildingPrefabEnd;
 
     Chain chain;  
 
     int timerLimit = 20;
     int timer = 0;
 
+    float position = 0;
+    float positionMoveBy = 4f;
+
     // Start is called before the first frame update
     void Start()
     {
-        chain = new Chain("--| [");
+        chain = new Chain("--| [", this);
+        Chain.emptySpace.setPrefab(buildingPrefabEmpty);
+        Chain.buildingFront.setPrefab(buildingPrefabStart);
+        Chain.buildingMid.setPrefab(buildingPrefabMid);
+        Chain.buildingEnd.setPrefab(buildingPrefabEnd);
+        
     }
 
     // Update is called once per frame
@@ -32,9 +52,13 @@ public class MarkovChain : MonoBehaviour
             timer = timerLimit;
             chain.iterate();
             Debug.Log(Chain.level);
+            transform.Translate(4f, 0f, 0f);
         }
     }
 
+    public void makeObject(Transform prefab) {
+        Instantiate(prefab);
+    }
 
     public void startChain() {
         //TODO
@@ -56,7 +80,7 @@ player is moving faster.
 - get a reference to the player object in the inspector, or via code, and have it
 use that to access the player speed and position 
 */
-  
+/*
 
 struct generationGroup {
     float height;
@@ -65,6 +89,8 @@ struct generationGroup {
 }
                      
 public class Chain {
+
+    MarkovChain generatorObject;
 
 
     //for text demo only
@@ -79,12 +105,12 @@ public class Chain {
     generationGroup previousPreviousGroup;
 
 
-    EmptySpace emptySpace = new EmptySpace();
+    public static EmptySpace emptySpace = new EmptySpace();
 
-    BuildingFront buildingFront = new BuildingFront();
-    BuildingMid buildingMid = new BuildingMid();
-    BuildingEnd buildingEnd = new BuildingEnd();
-
+    public static BuildingFront buildingFront = new BuildingFront();
+    public static BuildingMid buildingMid = new BuildingMid();
+    public static BuildingEnd buildingEnd = new BuildingEnd();
+/*
     CrackedFront crackedFront = new CrackedFront();
     CrackedMid crackedMid = new CrackedMid();
     CrackedEnd crackedEnd = new CrackedEnd();
@@ -94,16 +120,31 @@ public class Chain {
     WindowEnd windowEnd = new WindowEnd();
 
     Billboard billboard = new Billboard();
-
-
-    public Chain(string lvl) {
+*/
+/*
+    public Chain(string lvl, MarkovChain generatorObj) {
         initChain();
         currentLink = buildingFront;
         level = lvl;
+        generatorObject = generatorObj;
     }
 
     public void initChain() {
 
+
+        emptySpace.addLinks(emptySpace, buildingFront);
+        emptySpace.addChances(0.6, 0.4);
+
+        buildingFront.addLinks(buildingMid);
+        buildingFront.addChances(1);
+
+        buildingMid.addLinks(buildingMid, buildingEnd);
+        buildingMid.addChances(0.75, 0.25);
+
+        buildingEnd.addLinks(emptySpace);
+        buildingEnd.addChances(1);
+
+/*
         emptySpace.addLinks(emptySpace, buildingFront, crackedFront, windowFront, billboard);
         emptySpace.addChances(0.6,      0.37,           0.025,        0.025,        0.025);
 
@@ -140,12 +181,16 @@ public class Chain {
 
         billboard.addLinks(emptySpace);
         billboard.addChances(1);
-
+*/      
+/*
     }
 
         public void iterate() {
         currentLink = currentLink.getNext();
         currentLink.generate();
+        //position += positionMoveBy;
+        //generatorObject.Instantiate(currentLink.buildingPrefab);
+        generatorObject.makeObject(currentLink.buildingPrefab);
     }
 
 }
@@ -156,6 +201,8 @@ public abstract class ChainLink {
     protected ChainLink [] links;
     protected double [] chances;
 
+    public Transform buildingPrefab;
+
     
     public ChainLink() {
     }
@@ -165,6 +212,10 @@ public abstract class ChainLink {
     }
     public void addChances(params double [] doubles) {
         chances = doubles;
+    }
+
+    public void setPrefab(Transform prefab) {
+        buildingPrefab = prefab;
     }
 
     public abstract void generate();
@@ -274,3 +325,5 @@ public class Billboard : ChainLink {
         Chain.level = Chain.level + "#";
     }
 }
+
+*/
