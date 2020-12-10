@@ -19,6 +19,10 @@ public class PlayerJumping : MonoBehaviour
     private float jumpTimeCounter;
     public float jumpTime;
 
+    private float yB4Jump;
+    private bool gotY;
+    private float yAftJump;
+
     void Start()
     {
         myRb = GetComponent<Rigidbody2D>();
@@ -43,9 +47,21 @@ public class PlayerJumping : MonoBehaviour
             isJumping = false;
         }
 
+        if (!isGrounded && !gotY) {
+            yB4Jump = transform.position.y;
+            gotY = true;
+        }
+        if (isGrounded && gotY) {
+            yAftJump = transform.position.y;
+            if (yB4Jump - yAftJump > 5f) {
+                ani.SetTrigger("RollTrigger");
+            }
+            gotY = false;
+        }
+
         Jump_Animation();
 
-        Debug.Log(jumpTimeCounter);
+        //Debug.Log();
     }
 
     // jump code
@@ -68,7 +84,6 @@ public class PlayerJumping : MonoBehaviour
         }
     }
 
-    //todo
     // jump animation
     void Jump_Animation()
     {
@@ -81,7 +96,4 @@ public class PlayerJumping : MonoBehaviour
             ani.SetBool("isJumping", false);
         }
     }
-    // play fall aniation when falling
-
-    // void roll
 }
