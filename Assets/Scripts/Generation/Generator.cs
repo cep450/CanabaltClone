@@ -30,7 +30,7 @@ public class Generator : MonoBehaviour
 
 ///////////// the tuning zone ///////////////
 
-    float heightDiffSpeedMultiplier = 0.1f; //this is multiplied by the running speed to get the
+    float heightDiffSpeedMultiplier = 0.2f; //this is multiplied by the running speed to get the
                                           //max positive vertical height difference between buildings
 
     float heightAllowanceFromTop = 2f;
@@ -90,7 +90,6 @@ public class Generator : MonoBehaviour
     ////////////////////////////////////
 
 
-    // Start is called before the first frame update
     void Start()
     {
 
@@ -119,7 +118,6 @@ public class Generator : MonoBehaviour
         //generateStartingBuilding();
     }
 
-    // Update is called once per frame
     void Update()
     {
         //TODO how to check when a new building needs to be generated?
@@ -261,4 +259,3 @@ public class Generator : MonoBehaviour
     }
 
 }
-

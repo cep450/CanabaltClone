@@ -9,12 +9,6 @@ public class BuildingCreator : MonoBehaviour
     float height;
 
 
-    /////TODO will also have sprite tiles 
-    //public sprite spriteCorner;
-    //public sprite spriteTop;
-    //public sprite spriteSide;
-    //public Sprite spriteMiddle;
-
     public void generate(float height, float length, float xpos) {
 
 

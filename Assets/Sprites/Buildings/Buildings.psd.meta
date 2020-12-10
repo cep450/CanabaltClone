@@ -618,27 +618,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buildings_20
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 432
-        width: 13
-        height: 29
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1abffeec2bc777e30800000000000000
-      internalID: 4501203459997957025
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Buildings_21
       rect:
         serializedVersion: 2
@@ -789,9 +768,9 @@ TextureImporter:
       name: Buildings_24
       rect:
         serializedVersion: 2
-        x: 311
+        x: 310
         y: 429
-        width: 13
+        width: 14
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
