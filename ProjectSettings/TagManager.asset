@@ -5,10 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - hitWall
+  - deathTrigger
   - Wall
   - Box
   - Floor
   - Win
+  - dontSquishMe
   layers:
   - Default
   - TransparentFX
