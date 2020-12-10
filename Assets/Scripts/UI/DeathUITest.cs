@@ -48,13 +48,13 @@ public class DeathUITest : MonoBehaviour
         if (activator.gameObject.tag == "deathTrigger")
         {
 
-            DeathTrigger deathTrigger = activator.gameObject.GetComponent<DeathTrigger>();
-            string deathMessage = deathTrigger.getDeathMessage();
+            //DeathTrigger deathTrigger = activator.gameObject.GetComponent<DeathTrigger>();
+           // string deathMessage = deathTrigger.getDeathMessage();
 
             Debug.Log("youve hit me! :(");
             //you die!!!! >:^)))
             gameOverPanel.SetActive(true);//activate THE GAME OVER panel 
-            distanceText.text = "You ran " + playerRun.distanceTotal + "m before " + deathMessage + ".";//in that panel showcase the score + the death message 
+            distanceText.text = "You ran " + playerRun.distanceTotal + "m before hitting a wall and tumbling to your death"  + ".";//in that panel showcase the score + the death message 
 
         }
         if (activator.gameObject.tag == "Win")
