@@ -7505,7 +7505,7 @@ MonoBehaviour:
   player: {fileID: 513965731}
   playerRunning: {fileID: 513965726}
   shaking: 1
-  shakeDuration: 100
+  shakeDuration: 1
   shakeMagnitude: 0.2
 --- !u!4 &1685098934 stripped
 Transform:
