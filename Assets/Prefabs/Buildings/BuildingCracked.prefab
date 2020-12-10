@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1452383290635344969}
   m_Layer: 0
   m_Name: BuildingCracked
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394019698013566388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
-  m_LocalScale: {x: 1, y: 6, z: 1}
+  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalScale: {x: 1, y: 8, z: 1}
   m_Children:
   - {fileID: 5780481109541869460}
   - {fileID: 9223286958079993328}
@@ -150,6 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcfa6a26e4982894d941766eff96a140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generateBoxes: 1
+  boxPrefab: {fileID: 7820198050723228142, guid: f6795545265c81d4b8a4b05db7de1393,
+    type: 3}
 --- !u!1 &3716604815363250530
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3716604815363250530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.05, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.01, z: 0}
   m_LocalScale: {x: 0.1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1399842422637903584}

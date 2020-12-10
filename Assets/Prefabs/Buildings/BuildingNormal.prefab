@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445756610524170378}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.05, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.01, z: 0}
   m_LocalScale: {x: 0.1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 1445756611616808957}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 7152886192755099356}
   m_Layer: 0
   m_Name: BuildingNormal
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,8 +98,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445756611616808952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
-  m_LocalScale: {x: 2, y: 6, z: 1}
+  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalScale: {x: 2, y: 8, z: 1}
   m_Children:
   - {fileID: 1445756610524170381}
   m_Father: {fileID: 0}
@@ -193,3 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcfa6a26e4982894d941766eff96a140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generateBoxes: 1
+  boxPrefab: {fileID: 7820198050723228142, guid: f6795545265c81d4b8a4b05db7de1393,
+    type: 3}
