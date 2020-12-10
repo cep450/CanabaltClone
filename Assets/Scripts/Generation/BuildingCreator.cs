@@ -46,6 +46,11 @@ public class BuildingCreator : MonoBehaviour
             
         }
 
+
+        //TODO
+        //add boxes 
+
+
         //finally, decorate it with sprites :]
         //tile sprites, and 
         //add a thing on top 

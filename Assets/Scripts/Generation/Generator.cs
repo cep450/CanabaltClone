@@ -30,16 +30,16 @@ public class Generator : MonoBehaviour
 
 ///////////// the tuning zone ///////////////
 
-    float heightDiffSpeedMultiplier = 0.2f; //this is multiplied by the running speed to get the
+    float heightDiffSpeedMultiplier = 0.15f; //this is multiplied by the running speed to get the
                                           //max positive vertical height difference between buildings
 
-    float heightAllowanceFromTop = 2f;
+    float heightAllowanceFromTop = 3f;
     float heightAllowanceFromBottom = 1f;
 
-    float minGapSize = 1f;
+    float minGapSize = 2.5f;
     float maxGapSizeMultiplier = 2f/3f; //
 
-    float minMinBuildingLength = 4f; //TODO- 96 pixels 
+    float minMinBuildingLength = 8f; //TODO- 96 pixels 
 
 
     int minNormalInARow = 3; //
@@ -142,7 +142,7 @@ public class Generator : MonoBehaviour
         float spaceLength = generateSpaceLength();
 
         //move the position of the generator based on the length of the gap
-        updatePosition(spaceLength);
+        updatePosition(spaceLength + 1.5f); //TODO WHY DO I HAVE TO ADD THIS HERE AND THE OTHER UPDATEPOSITION?????????
 
         BuildingCreator newEmptySpaceScript = Instantiate(buildingEmpty.prefab).GetComponent<BuildingCreator>();
         newEmptySpaceScript.generate(0, spaceLength, transform.position.x);
@@ -156,7 +156,7 @@ public class Generator : MonoBehaviour
 
         //move the position of the generator based on the length of the new building,
         //and update the stored height value
-        updatePosition(buildingHeight, buildingLength);
+        updatePosition(buildingHeight, buildingLength + 1.5f);
 
         BuildingCreator newBuildingScript = Instantiate(buildingPrefab).GetComponent<BuildingCreator>();
         newBuildingScript.generate(buildingHeight, buildingLength, transform.position.x);
