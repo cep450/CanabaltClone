@@ -18,8 +18,11 @@ public class Generator : MonoBehaviour
     public GameObject prefabCrane;
 
 
+    float cameraPosBuffer = 1f; //determining when to generate the next building 
+
     float screenWidthInWorld;
     float screenHeightInWorld;
+    float screenWidthInWorldHalf;
 
     float bottomOfScreen = 0; //y=0
 
@@ -30,16 +33,16 @@ public class Generator : MonoBehaviour
 
 ///////////// the tuning zone ///////////////
 
-    float heightDiffSpeedMultiplier = 0.1f; //this is multiplied by the running speed to get the
+    float heightDiffSpeedMultiplier = 0.13f; //this is multiplied by the running speed to get the
                                           //max positive vertical height difference between buildings
 
-    float heightAllowanceFromTop = 2f;
+    float heightAllowanceFromTop = 3f;
     float heightAllowanceFromBottom = 1f;
 
-    float minGapSize = 1f;
-    float maxGapSizeMultiplier = 2f/3f; //
+    float minGapSize = 2.25f;
+    float maxGapSizeMultiplier = 2f/3f - 0.01f; //
 
-    float minMinBuildingLength = 4f; //TODO- 96 pixels 
+    float minMinBuildingLength = 8f; //TODO- 96 pixels 
 
 
     int minNormalInARow = 3; //
@@ -84,13 +87,6 @@ public class Generator : MonoBehaviour
 
 
 
-    //temporary timer //////////////////
-    int counter = 0;
-    int counterMax = 100;
-    ////////////////////////////////////
-
-
-    // Start is called before the first frame update
     void Start()
     {
 
@@ -98,6 +94,7 @@ public class Generator : MonoBehaviour
 
         screenHeightInWorld = Camera.main.orthographicSize * 2;
         screenWidthInWorld = screenHeightInWorld * Camera.main.aspect;
+        screenWidthInWorldHalf = screenWidthInWorld / 2f;
 
         //
 
@@ -119,22 +116,16 @@ public class Generator : MonoBehaviour
         //generateStartingBuilding();
     }
 
-    // Update is called once per frame
     void Update()
     {
         //TODO how to check when a new building needs to be generated?
 
-        //TEMPORARY timer /////////////////////////
-
-        if(counter > counterMax) {
-            counter = 0;
-
+        //when the right side of the camera approaches the location of the generator, 
+        //generate a new building. 
+        if(Camera.main.transform.position.x + screenWidthInWorldHalf > transform.position.x - cameraPosBuffer) {
             generateBuilding();
-
-        } else {
-            counter++;
         }
-        /////////////////////////////////////////
+
     }
 
     void generateBuilding() {
@@ -144,7 +135,7 @@ public class Generator : MonoBehaviour
         float spaceLength = generateSpaceLength();
 
         //move the position of the generator based on the length of the gap
-        updatePosition(spaceLength);
+        updatePosition(spaceLength + 1.5f); //TODO WHY DO I HAVE TO ADD THIS HERE AND THE OTHER UPDATEPOSITION?????????
 
         BuildingCreator newEmptySpaceScript = Instantiate(buildingEmpty.prefab).GetComponent<BuildingCreator>();
         newEmptySpaceScript.generate(0, spaceLength, transform.position.x);
@@ -158,17 +149,10 @@ public class Generator : MonoBehaviour
 
         //move the position of the generator based on the length of the new building,
         //and update the stored height value
-        updatePosition(buildingHeight, buildingLength);
+        updatePosition(buildingHeight, buildingLength + 1.5f);
 
         BuildingCreator newBuildingScript = Instantiate(buildingPrefab).GetComponent<BuildingCreator>();
         newBuildingScript.generate(buildingHeight, buildingLength, transform.position.x);
-
-
-        //TODO generate boxes 
-        
-
-        
-        
 
     }
 
@@ -261,4 +245,3 @@ public class Generator : MonoBehaviour
     }
 
 }
-
