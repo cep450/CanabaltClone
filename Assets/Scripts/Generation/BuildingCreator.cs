@@ -9,6 +9,22 @@ public class BuildingCreator : MonoBehaviour
     float height;
 
 
+    public bool generateBoxes;
+    public GameObject boxPrefab;
+    float boxXOffset = 48.81f;
+    float boxYOffset = 25.1f;
+
+
+
+////////////// tuning for boxes zone 
+    float boxChance = 0.3f;
+    float boxMargin = 4f;
+    float lengthPerBoxPossible = 5f;
+    int maxBoxesEver = 3;
+
+//////////////
+
+
     public void generate(float height, float length, float xpos) {
 
 
@@ -47,8 +63,37 @@ public class BuildingCreator : MonoBehaviour
         }
 
 
-        //TODO
-        //add boxes 
+        //if we're the right type of prefab to spawn boxes....
+        if(generateBoxes) {
+
+            //roll to generate boxes here 
+            if(Random.Range(0f, 1f) < boxChance) {
+                
+                //lower and upper position bounds
+                float minX = transform.position.x - (0.5f * length) + boxMargin;
+                float maxX = transform.position.x + (0.5f * length) - boxMargin;
+
+                if(maxX > minX) { //if the building is wide enough to spawn any boxes
+                    
+                    int maxNumBoxes = (int)((maxX - minX) / lengthPerBoxPossible);
+                    int numBoxes = Random.Range(1, maxNumBoxes);
+                    if(numBoxes > maxBoxesEver) {
+                        numBoxes = maxBoxesEver;
+                    }
+
+                    for(int i = 0; i < numBoxes; i++) {
+
+                        //generate a location
+                        float placeToCreate = Random.Range(minX, maxX);
+
+                        //instantiate the box 
+                        GameObject box = Instantiate(boxPrefab);
+                        box.transform.Translate(placeToCreate + boxXOffset, height + boxYOffset, 0);
+
+                    }
+                }
+            }
+        }
 
 
         //finally, decorate it with sprites :]

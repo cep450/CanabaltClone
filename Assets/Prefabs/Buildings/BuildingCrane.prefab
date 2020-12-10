@@ -169,6 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcfa6a26e4982894d941766eff96a140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generateBoxes: 0
+  boxPrefab: {fileID: 0}
 --- !u!61 &7662949734990384365
 BoxCollider2D:
   m_ObjectHideFlags: 0
