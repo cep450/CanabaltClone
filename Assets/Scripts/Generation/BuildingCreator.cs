@@ -18,7 +18,7 @@ public class BuildingCreator : MonoBehaviour
 
 ////////////// tuning for boxes zone 
     float boxChance = 0.3f;
-    float boxMargin = 4f;
+    float boxMargin = 5f;
     float lengthPerBoxPossible = 5f;
     int maxBoxesEver = 3;
 
