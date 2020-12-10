@@ -57,10 +57,12 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
         pauseScreenScript.ResumeGame(); //BUG REPORT: if game is paused and the person quits to main, then tries to come back the screen is frozen. 
+       
     }
     public void BackToMain()
     {
         SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
     }
 
     public void BackToPauseMenu()
@@ -79,6 +81,7 @@ public class MainMenu : MonoBehaviour
     public void BackButton()
     {
         SceneManager.LoadScene("MainMenu");// go back to the mainmenu 
+        Time.timeScale = 1;
     }
     // in the options button once you change a specific setting itll take you to the specific ptions menu instead of the main menu 
     public void OptionsBackButton()
