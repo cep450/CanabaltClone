@@ -13,12 +13,14 @@ public class DeathUITest : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject winPanel;
     public PlayerRunning playerRun;
+    public GameObject distanceRan; // score on top right 
     
 
 
     // Start is called before the first frame update
     void Start()
     {
+        distanceRan.GetComponent<Text>().text = "0";
         gameOverPanel.SetActive(false);
         winPanel.SetActive(false);
     }
@@ -26,19 +28,8 @@ public class DeathUITest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(moveLeft);
-            runDistance+=1; //distance increases when you move just to test if it takes in the score 
-            //Debug.Log(runDistance);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            //Debug.Log(runDistance);
-            transform.Translate(-moveLeft);
-            runDistance+=1; //distance increases when you move just to test if it takes in the score 
-        }
+        distanceRan.GetComponent<Text>().text = playerRun.distanceTotal.ToString("F0") + "m";
+     
 
     }
     //If I enter a trigger and DIE!!!

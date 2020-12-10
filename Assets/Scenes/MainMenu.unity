@@ -7595,9 +7595,9 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 21300000, guid: 08798d5b267402f45accc2f16ef86286,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 08798d5b267402f45accc2f16ef86286, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 911b5be10e174284b9386ecf8adf3ff3, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 911b5be10e174284b9386ecf8adf3ff3, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: 911b5be10e174284b9386ecf8adf3ff3, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 08798d5b267402f45accc2f16ef86286, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -7608,7 +7608,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1336011538}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1936400387}
+        m_MethodName: PlayProc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1336011538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7628,7 +7639,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 911b5be10e174284b9386ecf8adf3ff3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 08798d5b267402f45accc2f16ef86286, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

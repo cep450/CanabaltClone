@@ -48,7 +48,11 @@ public class MainMenu : MonoBehaviour
     {
         
     }
-   
+
+    public void PlayProc()
+    {
+        SceneManager.LoadScene("Game_Proc");
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene("Game");
