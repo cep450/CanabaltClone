@@ -15,7 +15,8 @@ public class Hotkeys : MonoBehaviour
     void Update()
     {
         if (Input.GetKey(KeyCode.R)) {
-            SceneManager.LoadScene("Game");
+           // SceneManager.LoadScene("Game");
+            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
         }
     }
 }

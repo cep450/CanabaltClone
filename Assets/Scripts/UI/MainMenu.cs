@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 //Purpose: houses all the actions the buttons in the main menu does;
-//Usage: place this on a menuManager gameobject that you drag into the scene
+//Usage: place this on a menuManager gameobject that you drag into the scene / also placed in game scene just so theres one main script with button management
 public class MainMenu : MonoBehaviour
 {
     //assign all in inspector
@@ -18,9 +18,11 @@ public class MainMenu : MonoBehaviour
     public GameObject graphicsSettings;
     public GameObject soundSettings;
     public GameObject gameplaySettings;
+    public PauseScreen pauseScreenScript;
+   
 
-  
-    
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,8 @@ public class MainMenu : MonoBehaviour
         graphicsSettings.SetActive(false);
         soundSettings.SetActive(false);
         gameplaySettings.SetActive(false);
+      
+       
     }
 
     // Update is called once per frame
@@ -44,19 +48,40 @@ public class MainMenu : MonoBehaviour
     {
         
     }
+
+    public void PlayProc()
+    {
+        SceneManager.LoadScene("Game_Proc");
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene("Game");
+        pauseScreenScript.ResumeGame(); //BUG REPORT: if game is paused and the person quits to main, then tries to come back the screen is frozen. 
+       
     }
     public void BackToMain()
     {
         SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
     }
 
+    public void BackToPauseMenu()
+    {
+        optionsPanel.SetActive(false);
+        leaderboardPanel.SetActive(false);
+        achievementsPanel.SetActive(false);
+        leadAllTimePanel.SetActive(false);
+        leadFriendsPanel.SetActive(false);
+        leadLocalPanel.SetActive(false);
+        graphicsSettings.SetActive(false);
+        soundSettings.SetActive(false);
+        gameplaySettings.SetActive(false);
+    }
 
     public void BackButton()
     {
         SceneManager.LoadScene("MainMenu");// go back to the mainmenu 
+        Time.timeScale = 1;
     }
     // in the options button once you change a specific setting itll take you to the specific ptions menu instead of the main menu 
     public void OptionsBackButton()
