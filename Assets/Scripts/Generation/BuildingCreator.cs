@@ -14,6 +14,16 @@ public class BuildingCreator : MonoBehaviour
     float boxXOffset = 48.81f;
     float boxYOffset = 25.1f;
 
+    public bool generateTops;
+    float chanceToGenTop = 0.5f;
+    public Sprite top1;
+    float top1Size = 17f;
+    public Sprite top2;
+    float top2Size = 27.5f;
+    public Sprite top3;
+    float top3Size = 24.6f;
+    
+
 
     float tilerEdgeMargin = 0.5f;
 
@@ -101,28 +111,28 @@ public class BuildingCreator : MonoBehaviour
             }
         }
 
+        //generate building top sprites 
+        if(generateTops) {
 
-        //finally, decorate it with sprites :]
-        //tile sprites, and 
-        //add a thing on top 
+            float rand1 = Random.Range(0f, 1f);
 
-        //TODO
-        tileSprites();
-        putTopOfBuildingSprite();
+            if(rand1 < chanceToGenTop) {
 
+                int rand = Random.Range(1,3);
+                Sprite spriteToinstantiate = null;
+
+                if(rand == 1 && length >= top1Size) {
+                    spriteToinstantiate = top1;
+                } else if(rand == 2 && length >= top2Size) {
+                    spriteToinstantiate = top2;
+                } else if(rand == 3 && length >= top3Size) {
+                    spriteToinstantiate = top3;
+                }
+
+                if(spriteToinstantiate != null) {
+                    //TODO put the sprite where it needs to be 
+                }
+            }
+        }
     }
-
-
-    void tileSprites() {
-
-        //TODO
-
-    }
-
-    void putTopOfBuildingSprite() {
-
-        //TODO
-
-    }
-
 }
