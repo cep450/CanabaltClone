@@ -10,7 +10,7 @@ public class MovingBuilding : MonoBehaviour
 {
 
     public bool movementSpeedPositive;
-    float movementSpeed = 0.025f;
+    float movementSpeed = 0.045f;
     Vector3 movementVector;
 
     public bool moving;
@@ -27,13 +27,9 @@ public class MovingBuilding : MonoBehaviour
         moving = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void FixedUpdate() {
         if(moving) {
             transform.Translate(movementVector);
-            //TODO make this happen RELATIVE TO TIME rather than relative to framerate. 
-
             //TODO: the y=0 killplane shouldnt move along with it
 
         } else {
