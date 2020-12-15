@@ -15,10 +15,11 @@ public class BuildingCreator : MonoBehaviour
     float boxYOffset = 25.1f;
 
 
+    float tilerEdgeMargin = 0.5f;
 
 ////////////// tuning for boxes zone 
     float boxChance = 0.3f;
-    float boxMargin = 5f;
+    float boxMargin = 7f;
     float lengthPerBoxPossible = 5f;
     int maxBoxesEver = 3;
 
@@ -45,7 +46,7 @@ public class BuildingCreator : MonoBehaviour
         transform.Translate(xToTranslate, height, 0f);
 
         //but, make sure the children aren't scaled horizontally. (undo their scaling)
-        float lengthUndo = 1f/length;
+        float lengthUndo = 1f/length * 2f;
 
         Transform [] childTransforms = GetComponentsInChildren<Transform>();
 
@@ -58,6 +59,11 @@ public class BuildingCreator : MonoBehaviour
             } else if(!t.Equals(transform) && !t.gameObject.tag.Equals("dontSquishMe")) {
                 //if it's not a killplane, the original, or something not to change, fix the width
                 t.localScale = new Vector3(t.localScale.x * lengthUndo, t.localScale.y, t.localScale.z);
+                
+                if(t.gameObject.tag.Equals("Tiler")) { 
+                    //tilers should change sprite "size"
+                    t.gameObject.GetComponent<SpriteRenderer>().size *= new Vector2((length / 2) - tilerEdgeMargin, 1f);
+                }
             }
             
         }

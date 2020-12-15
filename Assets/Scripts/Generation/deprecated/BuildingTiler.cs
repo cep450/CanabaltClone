@@ -5,12 +5,21 @@ using UnityEngine;
 public class BuildingTiler : MonoBehaviour
 {
 
-    public Sprite sprCorner;
-    public Sprite sprTop;
-    public Sprite sprSide;
-    public Sprite sprInterior1;
-    public Sprite sprInterior2;
-    public Sprite sprInterior3;
+    public SpriteRenderer sprCorner;
+    public SpriteRenderer sprTop;
+    public SpriteRenderer sprSide;
+    public SpriteRenderer sprInterior1;
+    public SpriteRenderer sprInterior2;
+    public SpriteRenderer sprInterior3;
+
+
+    Vector3 sprScale = new Vector3(5f, 5f, 1f);
+    Vector3 sprScaleFlipped = new Vector3(-5f, 5f, 1f);
+
+
+    public bool invertTile; //for top of window buildings.... worry about this later 
+
+    float widthMultiplier = Generator.tileWidthInWorld;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +27,17 @@ public class BuildingTiler : MonoBehaviour
         
     }
 
-    public void tile(int numVertical, int numHorizontal) {
+    //TODO also, need to allow different building types (eventually) 
+
+    public void tile(float width, int numVertical) {
+
+
+        SpriteRenderer spr;
+
+        int numHorizontal = (int)(width / widthMultiplier);
+
+        float x = transform.position.x - (width / 2);
+        float y = transform.position.y;
 
         //first row- the roof 
         //first corner 
@@ -27,7 +46,9 @@ public class BuildingTiler : MonoBehaviour
         //int sprTopWidth = sprTop.
 
         //place left corner
-        //TODO
+        spr = Instantiate(sprCorner);
+        spr.transform.Translate(new Vector3(x, y, 0));
+        spr.transform.localScale = sprScale;
 
         //place middle pieces
         for(int i = 1; i < numHorizontal - 1; i++) {
@@ -61,7 +82,7 @@ public class BuildingTiler : MonoBehaviour
     }
 
 
-    public Sprite pickInterior() {
+    public SpriteRenderer pickInterior() {
         int rand = Random.Range(1, 3);
         if(rand == 1) {
             return sprInterior1;

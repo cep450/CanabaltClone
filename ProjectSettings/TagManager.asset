@@ -11,6 +11,7 @@ TagManager:
   - Floor
   - Win
   - dontSquishMe
+  - Tiler
   layers:
   - Default
   - TransparentFX
