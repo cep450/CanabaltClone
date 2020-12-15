@@ -12,8 +12,6 @@ public class BuildingTiler : MonoBehaviour
     public Sprite sprInterior2;
     public Sprite sprInterior3;
 
-    public int numToTileVertically;
-
     // Start is called before the first frame update
     void Start()
     {
