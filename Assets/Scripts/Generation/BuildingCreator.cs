@@ -74,6 +74,11 @@ public class BuildingCreator : MonoBehaviour
                     //tilers should change sprite "size"
                     t.gameObject.GetComponent<SpriteRenderer>().size *= new Vector2((length / 2) - tilerEdgeMargin, 1f);
                 }
+
+                if(t.gameObject.tag.Equals("TilerMarginless")) { 
+                    //tilers should change sprite "size"
+                    t.gameObject.GetComponent<SpriteRenderer>().size *= new Vector2((length / 2), 1f);
+                }
             }
             
         }
