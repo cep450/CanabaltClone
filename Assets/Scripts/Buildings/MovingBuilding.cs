@@ -10,7 +10,7 @@ public class MovingBuilding : MonoBehaviour
 {
 
     public bool movementSpeedPositive;
-    float movementSpeed = 0.02f;
+    float movementSpeed = 0.025f;
     Vector3 movementVector;
 
     public bool moving;
@@ -45,5 +45,13 @@ public class MovingBuilding : MonoBehaviour
         }
     }
 
-    
+
+    //activate falling buildings
+    void OnTriggerEnter2D(Collider2D activator) {
+        if (activator.tag == "Player") {
+            Debug.Log("BUILDING KNOCKED OVER");
+            moving = true;
+        }
+    }
+       
 }

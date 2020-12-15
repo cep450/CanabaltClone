@@ -14,12 +14,5 @@ public class CollisionCheck : MonoBehaviour
         if (activator.tag == "deathTrigger") {
             playerRunning.Die();
         }
-
-        //activate falling buildings
-        if (activator.tag == "FallTrigger") {
-            Debug.Log("BUILDING KNOCKED OVER");
-            activator.GetComponent<MovingBuilding>().moving = true;
-        }
-
     }
 }
