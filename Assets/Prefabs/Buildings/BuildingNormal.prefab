@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 8121229686434133142}
   - component: {fileID: 4808122450616053779}
   m_Layer: 0
-  m_Name: TopRight
+  m_Name: SprTopRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 1969917078414392133}
   - component: {fileID: 2122302518023085931}
   m_Layer: 0
-  m_Name: TopLeft
+  m_Name: SprTopLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 9194617866479800073}
   - component: {fileID: 4097911410250510585}
   m_Layer: 0
-  m_Name: Center
+  m_Name: SprCenter
   m_TagString: Tiler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,7 +411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4746557069548237993}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0026, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2009, z: 0}
   m_LocalScale: {x: 2.5, y: 0.625, z: 1}
   m_Children: []
   m_Father: {fileID: 1445756611616808957}
@@ -462,7 +462,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 0.4, y: 1.2820011}
+  m_Size: {x: 0.4, y: 1.9332691}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 5734245855972252634}
   - component: {fileID: 1687645183002814514}
   m_Layer: 0
-  m_Name: Buildings_24
+  m_Name: SprLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -493,8 +493,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6140719153420148996}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.0028, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.486684, z: 1}
+  m_LocalPosition: {x: -0.5, y: -0.2002, z: 0}
+  m_LocalScale: {x: 2.5, y: 3.7557325, z: 1}
   m_Children: []
   m_Father: {fileID: 1445756611616808957}
   m_RootOrder: 5
@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 4547079241230375517}
   - component: {fileID: 7343801024271840086}
   m_Layer: 0
-  m_Name: Buildings_24 (1)
+  m_Name: SprRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -575,8 +575,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8537984845774812031}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.0028, z: 0}
-  m_LocalScale: {x: -2.5, y: 2.486684, z: 1}
+  m_LocalPosition: {x: 0.5, y: -0.2002, z: 0}
+  m_LocalScale: {x: -2.5, y: 3.7557325, z: 1}
   m_Children: []
   m_Father: {fileID: 1445756611616808957}
   m_RootOrder: 6

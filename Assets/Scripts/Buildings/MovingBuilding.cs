@@ -13,7 +13,7 @@ public class MovingBuilding : MonoBehaviour
     float movementSpeed = 0.02f;
     Vector3 movementVector;
 
-    bool moving;
+    public bool moving;
 
     // Start is called before the first frame update
     void Start()
@@ -36,14 +36,7 @@ public class MovingBuilding : MonoBehaviour
 
             //TODO: the y=0 killplane shouldnt move along with it
 
-
         } else {
-            //TODO check if player enters the right trigger, if so, make it move
-            //migbht need a public variable triggerToCheck
-            
-            //if player enters trigger named FallTrigger,
-            //set move to true 
-
             //if it's an i-beam. it's already moving 
             if(movementSpeedPositive) {
                 moving = true;
@@ -51,4 +44,6 @@ public class MovingBuilding : MonoBehaviour
 
         }
     }
+
+    
 }
