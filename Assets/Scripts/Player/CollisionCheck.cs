@@ -14,6 +14,5 @@ public class CollisionCheck : MonoBehaviour
         if (activator.tag == "deathTrigger") {
             playerRunning.Die();
         }
-
     }
 }
