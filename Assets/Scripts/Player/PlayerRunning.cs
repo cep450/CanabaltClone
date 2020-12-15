@@ -16,10 +16,6 @@ public class PlayerRunning : MonoBehaviour
     public float runningSpeedSlowDown = 0.3f;
     
     public int distanceTotal; // total distance traveled by player, also the score
-    /*
-    float xCurrent; // current distance to origin, controlling to snap player back
-    public float xMax = 100; // distance threshold, when reached snap player back
-    */
 
     public bool death = false; // death boolean
     
@@ -90,11 +86,6 @@ public class PlayerRunning : MonoBehaviour
     }
 
     // getter functions to find out speed & location
-    /*
-    public float getCurrentDistanceFromOrigin() {
-        return xCurrent;
-    }
-    */
     public float getDistanceTraveled() {
         return distanceTotal;
     }

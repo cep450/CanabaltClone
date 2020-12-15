@@ -15867,7 +15867,7 @@ MonoBehaviour:
   playerRunning: {fileID: 513965726}
   shaking: 1
   shakeDuration: 1
-  shakeMagnitude: 0.2
+  shakeMagnitude: 0.6
 --- !u!4 &1685098934 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4743922397900477634, guid: 14c8818b81386e14fa4c2b5ac93f8ebe,
