@@ -22006,9 +22006,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 513965731}
   playerRunning: {fileID: 513965726}
-  shaking: 0
-  shakeDuration: 0
-  shakeMagnitude: 0
+  shaking: 1
+  shakeDuration: 1
+  shakeMagnitude: 0.6
 --- !u!114 &1680941453
 MonoBehaviour:
   m_ObjectHideFlags: 0
