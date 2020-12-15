@@ -13,7 +13,7 @@ public class PlayerRunning : MonoBehaviour
     private float runningSpeed; // current running speed of player
     public float runningSpeedMax; // max speed to run at
     private float runningSpeedDifference = 1f; // change in running speed as run goes on
-    public float runningSpeedSlowDown = 0.3f;
+    public float runningSpeedSlowDown = 0.7f;
     
     public int distanceTotal; // total distance traveled by player, also the score
 

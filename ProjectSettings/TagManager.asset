@@ -11,6 +11,9 @@ TagManager:
   - Floor
   - Win
   - dontSquishMe
+  - Tiler
+  - FallTrigger
+  - TilerMarginless
   layers:
   - Default
   - TransparentFX
