@@ -10,7 +10,7 @@ public class MovingBuilding : MonoBehaviour
 {
 
     public bool movementSpeedPositive;
-    float movementSpeed = 0.01f;
+    float movementSpeed = 0.02f;
     Vector3 movementVector;
 
     bool moving;
