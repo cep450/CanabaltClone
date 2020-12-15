@@ -30,7 +30,6 @@ public class Generator : MonoBehaviour
     float minBuildingHeight;
 
 
-
     public static float tileWidthInWorld = 0.7f; //how wide each tile is
 
 ///////////// the tuning zone ///////////////
@@ -42,7 +41,7 @@ public class Generator : MonoBehaviour
     float heightAllowanceFromBottom = 2f;
 
     float minGapSize = 2.3f;
-    float maxGapSizeMultiplier = 2f/3f - 0.025f; //
+    float maxGapSizeMultiplier = 2f/3f - 0.05f; //
 
     float minMinBuildingLength = 8f; //TODO- 96 pixels 
 

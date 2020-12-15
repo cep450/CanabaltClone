@@ -12,6 +12,7 @@ TagManager:
   - Win
   - dontSquishMe
   - Tiler
+  - FallTrigger
   layers:
   - Default
   - TransparentFX
