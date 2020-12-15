@@ -11,7 +11,7 @@ public class CollisionCheck : MonoBehaviour
             playerRunning.Slow_Down();
         }
 
-        if (activator.tag == "hitWall") {
+        if (activator.tag == "deathTrigger") {
             playerRunning.Die();
         }
 

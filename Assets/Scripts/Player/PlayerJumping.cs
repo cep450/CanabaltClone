@@ -55,6 +55,7 @@ public class PlayerJumping : MonoBehaviour
             yAftJump = transform.position.y;
             if (yB4Jump - yAftJump > 5f) {
                 ani.SetTrigger("RollTrigger");
+                Debug.Log("fall roll");
             }
             gotY = false;
         }
