@@ -13,7 +13,7 @@ public class MovingBuilding : MonoBehaviour
     float movementSpeed = 0.045f;
     Vector3 movementVector;
 
-    public bool moving;
+    bool moving = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,6 @@ public class MovingBuilding : MonoBehaviour
             movementVector = new Vector3(0f, -movementSpeed, 0f);
         }
 
-        moving = false;
     }
 
     void FixedUpdate() {
