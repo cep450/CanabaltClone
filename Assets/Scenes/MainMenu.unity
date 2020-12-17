@@ -7111,7 +7111,7 @@ GameObject:
   - component: {fileID: 1224511637}
   - component: {fileID: 1224511636}
   m_Layer: 0
-  m_Name: FixedScene
+  m_Name: ProcSceneButt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7178,7 +7178,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1224511637}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1936400387}
+        m_MethodName: PlayProc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1224511637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7540,7 +7551,7 @@ GameObject:
   - component: {fileID: 1336011538}
   - component: {fileID: 1336011537}
   m_Layer: 0
-  m_Name: ProcGenScene
+  m_Name: FixedSceneButt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7610,7 +7621,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1936400387}
-        m_MethodName: PlayProc
+        m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9853,7 +9864,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1936400387}
-        m_MethodName: PlayGame
+        m_MethodName: PlayProc
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
