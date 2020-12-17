@@ -14,7 +14,7 @@ public class Hotkeys : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.R)) {
+        if (Input.GetKeyDown(KeyCode.R)) {
            // SceneManager.LoadScene("Game");
             Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
         }
