@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 147435638904999584}
   m_Layer: 0
   m_Name: BuildingSideTrigger
-  m_TagString: deathTrigger
+  m_TagString: deathTriggerProc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 4210308493951912499}
   m_Layer: 0
   m_Name: Killplane
-  m_TagString: deathTrigger
+  m_TagString: deathTriggerProc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

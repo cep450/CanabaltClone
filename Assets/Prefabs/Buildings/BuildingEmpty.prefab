@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7865851712583157255}
   m_Layer: 0
   m_Name: BuildingEmpty
-  m_TagString: deathTrigger
+  m_TagString: deathTriggerProc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,6 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateBoxes: 0
   boxPrefab: {fileID: 0}
+  generateTops: 0
 --- !u!212 &7865851712583157255
 SpriteRenderer:
   m_ObjectHideFlags: 0

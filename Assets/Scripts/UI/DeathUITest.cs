@@ -15,6 +15,7 @@ public class DeathUITest : MonoBehaviour
     public PlayerRunning playerRun;
     public GameObject distanceRan; // score on top right 
     
+    bool deathMsgWasSet = false; //only set the death message once
 
 
     // Start is called before the first frame update
@@ -36,16 +37,27 @@ public class DeathUITest : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D activator)
     {
         Debug.Log("youve hit me! :(");
-        if (activator.gameObject.tag == "deathTrigger")
+        if (activator.gameObject.tag.StartsWith("deathTrigger"))
         {
-
-            //DeathTrigger deathTrigger = activator.gameObject.GetComponent<DeathTrigger>();
-           // string deathMessage = deathTrigger.getDeathMessage();
 
             Debug.Log("youve hit me! :(");
             //you die!!!! >:^)))
             gameOverPanel.SetActive(true);//activate THE GAME OVER panel 
-            distanceText.text = "You ran " + playerRun.distanceTotal + "m before hitting a wall and tumbling to your death"  + ".";//in that panel showcase the score + the death message 
+
+            //are we in the proc scene or static scene?
+            if(activator.gameObject.tag.Equals("deathTriggerProc")) {
+                //proc scene
+                if(!deathMsgWasSet) {
+                    DeathTrigger deathTrigger = activator.gameObject.GetComponent<DeathTrigger>();
+                    string deathMessage = deathTrigger.getDeathMessage();
+                    distanceText.text = "You ran " + playerRun.distanceTotal + "m before " + deathMessage + ".";//in that panel showcase the score + the death message 
+                    deathMsgWasSet = true;
+                }
+                
+            } else {
+                //static scene
+                distanceText.text = "You ran " + playerRun.distanceTotal + "m before hitting a wall and tumbling to your death"  + ".";//in that panel showcase the score + the death message 
+            }
 
         }
         if (activator.gameObject.tag == "Win")

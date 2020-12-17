@@ -51,10 +51,10 @@ public class Generator : MonoBehaviour
     float probabilitySpecialBuilding = 0.2f;
 
 
-    float probabilityCracked = 0.25f;
-    float probabilityIBeam = 0.25f;
-    float probabilityWindow = 0.25f;
-    float probabilityCrane = 0.25f;
+    float probabilityCracked = 0.25f; //removed
+    float probabilityIBeam = 0.33f;
+    float probabilityWindow = 0.33f;
+    float probabilityCrane = 0.34f;
 
 /////////////////////////////////////////////
 
@@ -109,10 +109,9 @@ public class Generator : MonoBehaviour
         buildingWindow = new BuildingStruct(probabilityWindow, prefabWindow);
         buildingCrane = new BuildingStruct(probabilityCrane, prefabCrane);
 
-        specialBuildings = new BuildingStruct [] {buildingCracked, buildingIBeam, buildingWindow, buildingCrane};
+        //NO CRACKED BUILDING-- no sprite, and not tuned, but that's ok! we got 3 out of 4
+        specialBuildings = new BuildingStruct [] {buildingIBeam, buildingWindow, buildingCrane};
 
-        //TODO final vers will generate a special starting building a window building
-        //generateStartingBuilding();
     }
 
     void Update()
