@@ -9,27 +9,44 @@ using UnityEngine;
 public class MovingBuilding : MonoBehaviour
 {
 
-    public float movementSpeed;
+    public bool movementSpeedPositive;
+    float movementSpeed = 0.045f;
     Vector3 movementVector;
 
-    bool moving;
+    bool moving = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        movementVector = new Vector3(0f, movementSpeed, 0f);
-        moving = false;
+        if(movementSpeedPositive) {
+            movementVector = new Vector3(0f, movementSpeed, 0f);
+        } else {
+            movementVector = new Vector3(0f, -movementSpeed, 0f);
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void FixedUpdate() {
         if(moving) {
             transform.Translate(movementVector);
-            //TODO make this happen RELATIVE TO TIME rather than relative to framerate. 
+            //TODO: the y=0 killplane shouldnt move along with it
+
         } else {
-            //TODO check if player enters the right trigger, if so, make it move
-            //migbht need a public variable triggerToCheck
+            //if it's an i-beam. it's already moving 
+            if(movementSpeedPositive) {
+                moving = true;
+            }
+
         }
     }
+
+
+    //activate falling buildings
+    void OnTriggerEnter2D(Collider2D activator) {
+        if (activator.tag == "Player") {
+            Debug.Log("BUILDING KNOCKED OVER");
+            moving = true;
+        }
+    }
+       
 }

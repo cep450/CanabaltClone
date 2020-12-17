@@ -15,16 +15,11 @@ public class CameraControls : MonoBehaviour
     public float shakeDuration;
     public float shakeMagnitude;
 
-    void FixedUpdate()
-    {
-        // define player position each frame
-        playerPosition = new Vector3(player.position.x, player.position.y, transform.position.z);
+    void Start() {
+        StartCoroutine(CameraShakeCoroutine());
+    }
 
-        if (playerRunning.death != true && !shaking) { // only follows when player isn't dead
-            target = new Vector3(7f, 0f, 0f);
-            transform.position = Vector3.SmoothDamp(transform.position, target + playerPosition, ref velocity, 0.15f);
-        }
-        
+    public IEnumerator CameraShakeCoroutine() {
         if (playerRunning.death != true && shaking) {
             float shakeTime = 0f;
 
@@ -33,9 +28,22 @@ public class CameraControls : MonoBehaviour
 
                 transform.position = new Vector3(playerPosition.x + 7f, playerPosition.y + y, transform.position.z);
                 shakeTime += Time.deltaTime;
+
+                yield return 0;
             }
-            
+
             shaking = false;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        // define player position each frame
+        playerPosition = new Vector3(player.position.x, player.position.y, transform.position.z);
+
+        if (playerRunning.death != true && !shaking) { // only follows when player isn't dead
+            target = new Vector3(7f, 0f, 0f);
+            transform.position = Vector3.SmoothDamp(transform.position, target + playerPosition, ref velocity, 0.15f);
         }
 
     }

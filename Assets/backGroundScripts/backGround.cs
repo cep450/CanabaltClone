@@ -7,6 +7,9 @@ public class backGround : MonoBehaviour
    private float length, startPos;
    public GameObject cam;
    public float parralaxEffect;
+
+    public bool clampAtYZero;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,13 @@ public class backGround : MonoBehaviour
         float temp =(cam.transform.position.x * (1 - parralaxEffect));
         float dist = (cam.transform.position.x * parralaxEffect);
 
-        transform.position = new Vector3(startPos + dist, cam.transform.position.y-0.7f, 60f);
+        //don't go below 0 to fix flashing in procscene
+        float ypos = cam.transform.position.y-0.7f;
+        if(clampAtYZero) {
+            ypos = Mathf.Max(ypos, Camera.main.orthographicSize - 0.7f);
+        }
+
+        transform.position = new Vector3(startPos + dist, ypos, 60f);
 
         if(temp > startPos + length) startPos += length;
         else if(temp < startPos - length) startPos -= length;

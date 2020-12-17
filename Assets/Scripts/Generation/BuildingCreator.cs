@@ -9,11 +9,24 @@ public class BuildingCreator : MonoBehaviour
     float height;
 
 
-    /////TODO will also have sprite tiles 
-    //public sprite spriteCorner;
-    //public sprite spriteTop;
-    //public sprite spriteSide;
-    //public Sprite spriteMiddle;
+    public bool generateBoxes;
+    public GameObject boxPrefab;
+    float boxXOffset = 48.81f;
+    float boxYOffset = 25.1f;
+
+    public bool generateTops;
+
+
+    float tilerEdgeMargin = 0.5f;
+
+////////////// tuning for boxes zone 
+    float boxChance = 0.3f;
+    float boxMargin = 8f;
+    float lengthPerBoxPossible = 5f;
+    int maxBoxesEver = 3;
+
+//////////////
+
 
     public void generate(float height, float length, float xpos) {
 
@@ -35,7 +48,7 @@ public class BuildingCreator : MonoBehaviour
         transform.Translate(xToTranslate, height, 0f);
 
         //but, make sure the children aren't scaled horizontally. (undo their scaling)
-        float lengthUndo = 1f/length;
+        float lengthUndo = 1f/length * 2f;
 
         Transform [] childTransforms = GetComponentsInChildren<Transform>();
 
@@ -48,31 +61,58 @@ public class BuildingCreator : MonoBehaviour
             } else if(!t.Equals(transform) && !t.gameObject.tag.Equals("dontSquishMe")) {
                 //if it's not a killplane, the original, or something not to change, fix the width
                 t.localScale = new Vector3(t.localScale.x * lengthUndo, t.localScale.y, t.localScale.z);
+                
+                if(t.gameObject.tag.Equals("Tiler")) { 
+                    //tilers should change sprite "size"
+                    t.gameObject.GetComponent<SpriteRenderer>().size *= new Vector2((length / 2) - tilerEdgeMargin, 1f);
+                }
+
+                if(t.gameObject.tag.Equals("TilerMarginless")) { 
+                    //tilers should change sprite "size"
+                    t.gameObject.GetComponent<SpriteRenderer>().size *= new Vector2((length / 2), 1f);
+                }
             }
             
         }
 
-        //finally, decorate it with sprites :]
-        //tile sprites, and 
-        //add a thing on top 
 
-        //TODO
-        tileSprites();
-        putTopOfBuildingSprite();
+        //if we're the right type of prefab to spawn boxes....
+        if(generateBoxes) {
 
+            //roll to generate boxes here 
+            if(Random.Range(0f, 1f) < boxChance) {
+                
+                //lower and upper position bounds
+                float minX = transform.position.x - (0.5f * length) + boxMargin;
+                float maxX = transform.position.x + (0.5f * length) - boxMargin;
+
+                if(maxX > minX) { //if the building is wide enough to spawn any boxes
+                    
+                    int maxNumBoxes = (int)((maxX - minX) / lengthPerBoxPossible);
+                    int numBoxes = Random.Range(1, maxNumBoxes);
+                    if(numBoxes > maxBoxesEver) {
+                        numBoxes = maxBoxesEver;
+                    }
+
+                    for(int i = 0; i < numBoxes; i++) {
+
+                        //generate a location
+                        float placeToCreate = Random.Range(minX, maxX);
+
+                        //instantiate the box 
+                        GameObject box = Instantiate(boxPrefab);
+                        box.transform.Translate(placeToCreate + boxXOffset, height + boxYOffset, 0);
+
+                    }
+                }
+            }
+        }
+
+        //generate building top sprites 
+        if(generateTops) {
+
+            //TODO
+            
+        }
     }
-
-
-    void tileSprites() {
-
-        //TODO
-
-    }
-
-    void putTopOfBuildingSprite() {
-
-        //TODO
-
-    }
-
 }
