@@ -671,7 +671,7 @@ GameObject:
   - component: {fileID: 8543908013421618638}
   m_Layer: 0
   m_Name: SideTriggerLower
-  m_TagString: deathTrigger
+  m_TagString: deathTriggerProc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1234,7 +1234,7 @@ GameObject:
   - component: {fileID: 1893395921861593592}
   m_Layer: 0
   m_Name: SideTriggerUpper
-  m_TagString: deathTrigger
+  m_TagString: deathTriggerProc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

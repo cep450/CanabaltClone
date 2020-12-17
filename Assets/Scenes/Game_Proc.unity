@@ -14489,6 +14489,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1680941448}
+    - target: {fileID: 1570853197447151640, guid: 17ec00a4f80043844bb6e350fdf3febc,
+        type: 3}
+      propertyPath: clampAtYZero
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1570853197930688706, guid: 17ec00a4f80043844bb6e350fdf3febc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14564,6 +14569,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1680941448}
+    - target: {fileID: 1570853198240573082, guid: 17ec00a4f80043844bb6e350fdf3febc,
+        type: 3}
+      propertyPath: clampAtYZero
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ec00a4f80043844bb6e350fdf3febc, type: 3}
 --- !u!1 &1877292994
