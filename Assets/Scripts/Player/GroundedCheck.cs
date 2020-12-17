@@ -7,6 +7,8 @@ public class GroundedCheck : MonoBehaviour
     // put under player's grounded check trigger, check grounding
     public PlayerJumping playerJumping; // assign to PlayerJumping script
 
+//coyote time now implemented spacially w/ colliders on building prefabs 
+/* 
     IEnumerator CayoteTime() {
         if (playerJumping.isJumping) {
             yield return 0;
@@ -17,6 +19,7 @@ public class GroundedCheck : MonoBehaviour
             playerJumping.isGrounded = false;
         }
     }
+    */
     
     // grounded check
     void OnTriggerStay2D(Collider2D activator) {
@@ -26,12 +29,12 @@ public class GroundedCheck : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D activator) {
         if (activator.tag == "Floor") {
-            if (!playerJumping.isJumping) {
-                StartCoroutine(CayoteTime());
-            }
-            else {
+            //if (!playerJumping.isJumping) {
+                //StartCoroutine(CayoteTime());
+            //}
+            //else {
                 playerJumping.isGrounded = false;
-            }
+            //}
         }
     }
 }
