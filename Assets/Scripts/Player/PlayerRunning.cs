@@ -30,12 +30,14 @@ public class PlayerRunning : MonoBehaviour
 
     void FixedUpdate()
     {
-        Speed_Up();
-        // runs
-        myRb.velocity = new Vector2(runningSpeed, myRb.velocity.y);
-        distanceTotal = Mathf.RoundToInt(transform.position.x);
-        
-        //Debug.Log(distanceTotal);
+        if (death != true) {
+            Speed_Up();
+            // runs
+            myRb.velocity = new Vector2(runningSpeed, myRb.velocity.y);
+            distanceTotal = Mathf.RoundToInt(transform.position.x);
+            
+            //Debug.Log(distanceTotal);
+        }
     }
 
     // speed player up

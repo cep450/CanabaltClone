@@ -11,7 +11,7 @@ public class CollisionCheck : MonoBehaviour
             playerRunning.Slow_Down();
         }
 
-        if (activator.tag == "deathTrigger") {
+        if (activator.tag == "deathTrigger" || activator.tag == "deathTriggerProc") {
             playerRunning.Die();
         }
     }
