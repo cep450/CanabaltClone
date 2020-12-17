@@ -14,11 +14,14 @@ public class BuildingCreator : MonoBehaviour
     float boxXOffset = 48.81f;
     float boxYOffset = 25.1f;
 
+    public bool generateTops;
 
+
+    float tilerEdgeMargin = 0.5f;
 
 ////////////// tuning for boxes zone 
     float boxChance = 0.3f;
-    float boxMargin = 5f;
+    float boxMargin = 8f;
     float lengthPerBoxPossible = 5f;
     int maxBoxesEver = 3;
 
@@ -45,7 +48,7 @@ public class BuildingCreator : MonoBehaviour
         transform.Translate(xToTranslate, height, 0f);
 
         //but, make sure the children aren't scaled horizontally. (undo their scaling)
-        float lengthUndo = 1f/length;
+        float lengthUndo = 1f/length * 2f;
 
         Transform [] childTransforms = GetComponentsInChildren<Transform>();
 
@@ -58,6 +61,16 @@ public class BuildingCreator : MonoBehaviour
             } else if(!t.Equals(transform) && !t.gameObject.tag.Equals("dontSquishMe")) {
                 //if it's not a killplane, the original, or something not to change, fix the width
                 t.localScale = new Vector3(t.localScale.x * lengthUndo, t.localScale.y, t.localScale.z);
+                
+                if(t.gameObject.tag.Equals("Tiler")) { 
+                    //tilers should change sprite "size"
+                    t.gameObject.GetComponent<SpriteRenderer>().size *= new Vector2((length / 2) - tilerEdgeMargin, 1f);
+                }
+
+                if(t.gameObject.tag.Equals("TilerMarginless")) { 
+                    //tilers should change sprite "size"
+                    t.gameObject.GetComponent<SpriteRenderer>().size *= new Vector2((length / 2), 1f);
+                }
             }
             
         }
@@ -95,28 +108,11 @@ public class BuildingCreator : MonoBehaviour
             }
         }
 
+        //generate building top sprites 
+        if(generateTops) {
 
-        //finally, decorate it with sprites :]
-        //tile sprites, and 
-        //add a thing on top 
-
-        //TODO
-        tileSprites();
-        putTopOfBuildingSprite();
-
+            //TODO
+            
+        }
     }
-
-
-    void tileSprites() {
-
-        //TODO
-
-    }
-
-    void putTopOfBuildingSprite() {
-
-        //TODO
-
-    }
-
 }
