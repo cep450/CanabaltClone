@@ -10,10 +10,10 @@ public class MovingBuilding : MonoBehaviour
 {
 
     public bool movementSpeedPositive;
-    float movementSpeed = 0.025f;
+    float movementSpeed = 0.045f;
     Vector3 movementVector;
 
-    public bool moving;
+    bool moving = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,16 +24,11 @@ public class MovingBuilding : MonoBehaviour
             movementVector = new Vector3(0f, -movementSpeed, 0f);
         }
 
-        moving = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void FixedUpdate() {
         if(moving) {
             transform.Translate(movementVector);
-            //TODO make this happen RELATIVE TO TIME rather than relative to framerate. 
-
             //TODO: the y=0 killplane shouldnt move along with it
 
         } else {

@@ -199,13 +199,15 @@ public class Generator : MonoBehaviour
             i++;
         } while(tracker <= rand && i < specialBuildings.Length);
 
+        //if it's a falling building, make sure the next one is lower 
+        if(buildingToReturn.Equals(prefabCracked)) {
+            updatePosition(-1f, 0f);
+        }
+
         return buildingToReturn;
     }
 
     float generateBuildingHeight() {
-
-        //falling buildings. ummm 
-        //maybe they set the thing lower when they generate or something 
 
         float jumpHeightAllowance = player.getSpeed() * heightDiffSpeedMultiplier;
         float maxHeight = Mathf.Min(lastHeight + jumpHeightAllowance, maxBuildingHeight);
@@ -232,18 +234,6 @@ public class Generator : MonoBehaviour
         float maxGapSize = maxGapSizeMultiplier * player.getSpeed();
 
         return Random.Range(minGapSize, maxGapSize);
-
-    }
-
-    void generateStartingBuilding() {
-
-
-
-
-        //TODO
-
-
-
 
     }
 
