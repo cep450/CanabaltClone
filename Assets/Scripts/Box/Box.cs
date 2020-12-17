@@ -5,6 +5,7 @@ using UnityEngine;
 public class Box : MonoBehaviour
 {
     SpriteRenderer sprite;
+    BoxCollider2D boxTrigger;
     int rand;
     public Sprite[] boxTexture;
     bool fall;
@@ -13,6 +14,7 @@ public class Box : MonoBehaviour
     {
         rand = Random.Range(0, boxTexture.Length);
         sprite = GetComponent<SpriteRenderer>();
+        boxTrigger = GetComponent<BoxCollider2D>();
         sprite.sprite = boxTexture[rand];
         fall = false;
     }
@@ -26,6 +28,7 @@ public class Box : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D activator) {
         if (activator.tag == "Player") {
+            boxTrigger.enabled = false;
             fall = true;
         }
     }

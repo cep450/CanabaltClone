@@ -11,6 +11,10 @@ TagManager:
   - Floor
   - Win
   - dontSquishMe
+  - Tiler
+  - FallTrigger
+  - TilerMarginless
+  - deathTriggerProc
   layers:
   - Default
   - TransparentFX

@@ -30,17 +30,18 @@ public class Generator : MonoBehaviour
     float minBuildingHeight;
 
 
+    public static float tileWidthInWorld = 0.7f; //how wide each tile is
 
 ///////////// the tuning zone ///////////////
 
-    float heightDiffSpeedMultiplier = 0.13f; //this is multiplied by the running speed to get the
+    float heightDiffSpeedMultiplier = 0.11f; //this is multiplied by the running speed to get the
                                           //max positive vertical height difference between buildings
 
-    float heightAllowanceFromTop = 3f;
-    float heightAllowanceFromBottom = 1f;
+    float heightAllowanceFromTop = 2f;
+    float heightAllowanceFromBottom = 2f;
 
-    float minGapSize = 2.25f;
-    float maxGapSizeMultiplier = 2f/3f - 0.01f; //
+    float minGapSize = 2.3f;
+    float maxGapSizeMultiplier = 2f/3f - 0.05f; //
 
     float minMinBuildingLength = 8f; //TODO- 96 pixels 
 
@@ -50,10 +51,10 @@ public class Generator : MonoBehaviour
     float probabilitySpecialBuilding = 0.2f;
 
 
-    float probabilityCracked = 0.25f;
-    float probabilityIBeam = 0.25f;
-    float probabilityWindow = 0.25f;
-    float probabilityCrane = 0.25f;
+    float probabilityCracked = 0.25f; //removed
+    float probabilityIBeam = 0.33f;
+    float probabilityWindow = 0.33f;
+    float probabilityCrane = 0.34f;
 
 /////////////////////////////////////////////
 
@@ -80,10 +81,8 @@ public class Generator : MonoBehaviour
 
 
 
-    int texturePixelMultiple = 14; //pixels wide each texture is
-
     int normalBuildingsCounter = 0; //normal buldings in a row since last unusual building
-    float lastHeight = 1f;
+    float lastHeight = 1.5f;
 
 
 
@@ -110,10 +109,9 @@ public class Generator : MonoBehaviour
         buildingWindow = new BuildingStruct(probabilityWindow, prefabWindow);
         buildingCrane = new BuildingStruct(probabilityCrane, prefabCrane);
 
-        specialBuildings = new BuildingStruct [] {buildingCracked, buildingIBeam, buildingWindow, buildingCrane};
+        //NO CRACKED BUILDING-- no sprite, and not tuned, but that's ok! we got 3 out of 4
+        specialBuildings = new BuildingStruct [] {buildingIBeam, buildingWindow, buildingCrane};
 
-        //TODO final vers will generate a special starting building a window building
-        //generateStartingBuilding();
     }
 
     void Update()
@@ -200,13 +198,15 @@ public class Generator : MonoBehaviour
             i++;
         } while(tracker <= rand && i < specialBuildings.Length);
 
+        //if it's a falling building, make sure the next one is lower 
+        if(buildingToReturn.Equals(prefabCracked)) {
+            updatePosition(-1f, 0f);
+        }
+
         return buildingToReturn;
     }
 
     float generateBuildingHeight() {
-
-        //falling buildings. ummm 
-        //maybe they set the thing lower when they generate or something 
 
         float jumpHeightAllowance = player.getSpeed() * heightDiffSpeedMultiplier;
         float maxHeight = Mathf.Min(lastHeight + jumpHeightAllowance, maxBuildingHeight);
@@ -220,7 +220,11 @@ public class Generator : MonoBehaviour
         float minBuildingLength = Mathf.Max(screenWidthInWorld - gapSize, minMinBuildingLength);
         float maxBuildingLength = minBuildingLength * 2;
 
-        return Random.Range(minBuildingLength, maxBuildingLength);
+        float randomLength =  Random.Range(minBuildingLength, maxBuildingLength);
+        //BUT, make sure this is a multiple of the size of the sprites. 
+        float niceLength = (int)(randomLength / tileWidthInWorld) * tileWidthInWorld;
+
+        return niceLength;
 
     }
 
@@ -229,18 +233,6 @@ public class Generator : MonoBehaviour
         float maxGapSize = maxGapSizeMultiplier * player.getSpeed();
 
         return Random.Range(minGapSize, maxGapSize);
-
-    }
-
-    void generateStartingBuilding() {
-
-
-
-
-        //TODO
-
-
-
 
     }
 
